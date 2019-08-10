@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="sogou_site_verification" content="6EV6mkKQug">
+  
+  <title>IT Go</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="瞎搞事的博客">
+  
+  <meta name="description" content="本篇简单的介绍了Flutter，并进行Flutter环境的安装配置。更多详细信息可以查看Flutter官网或Flutter中文网。  什么是FlutterFlutter 是Google推出并开源的移动应用开发框架，主打跨平台、高保真、高性能。开发者可以通过Dart语言进行开发App，并且只需要一套代码就可以同时构建Android和iOS应用，并且性能可以达到原生应用一样的性能。Flutter">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Flutter">
+<meta property="og:url" content="https://blog.it9.top/essay/初识Flutter/index.html">
+<meta property="og:site_name" content="IT Go">
+<meta property="og:description" content="本篇简单的介绍了Flutter，并进行Flutter环境的安装配置。更多详细信息可以查看Flutter官网或Flutter中文网。  什么是FlutterFlutter 是Google推出并开源的移动应用开发框架，主打跨平台、高保真、高性能。开发者可以通过Dart语言进行开发App，并且只需要一套代码就可以同时构建Android和iOS应用，并且性能可以达到原生应用一样的性能。Flutter">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://blog.it9.top/blog_images/201812162239.png">
+<meta property="og:image" content="https://blog.it9.top/blog_images/201812162246.png">
+<meta property="og:updated_time" content="2019-03-17T06:59:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初识Flutter">
+<meta name="twitter:description" content="本篇简单的介绍了Flutter，并进行Flutter环境的安装配置。更多详细信息可以查看Flutter官网或Flutter中文网。  什么是FlutterFlutter 是Google推出并开源的移动应用开发框架，主打跨平台、高保真、高性能。开发者可以通过Dart语言进行开发App，并且只需要一套代码就可以同时构建Android和iOS应用，并且性能可以达到原生应用一样的性能。Flutter">
+<meta name="twitter:image" content="https://blog.it9.top/blog_images/201812162239.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+<script>
+ (function() {
+    var src;
+    if (document.location.protocol == "http:") {
+        src = "http://js.passport.qihucdn.com/11.0.1.js?55d431fa6c5ac2f680df02398a4e06a6";
+    } else {
+        src = "https://jspassport.ssl.qhimg.com/11.0.1.js?55d431fa6c5ac2f680df02398a4e06a6";
+    }
+    document.write('<script src="' + src + '" id="sozz"><\/script>');
+    console.log("360push");
+})(); (function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+    console.log("baidupush");
+})();
+</script>
+  
+
+  
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?73ea46c1b5fcdd8bdba5763824704213";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IT Go</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>全部</span>
+                    </a>
+                    
+                    <a href="/categories/essay">
+                        <i class="fa fa-edit"></i>
+                        <span>随笔</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.jpeg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        瞎搞事
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        瞎搞事，瞎折腾，瞎扯淡
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="博客" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="GitHub" target="_blank" href="//github.com/xuqingquan1995">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="tencent://message/?uin=1324569122&Menu=yes&Service=300&sigT=42a1e5347953b64c5ff3980f8a6e644d4b31456cb0b6ac6b27663a3c4dd0f4aa14a543b1716f9d45">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="mailto:xuqingquan1995@gmail.com">
+                            <i class="fa fa-envelope fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-初识Flutter" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      初识Flutter
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/随笔/">随笔</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-12-16
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <blockquote>
+<p>本篇简单的介绍了Flutter，并进行Flutter环境的安装配置。更多详细信息可以查看<a href="https://flutter.io" target="_blank" rel="noopener">Flutter官网</a>或<a href="https://flutterchina.club" target="_blank" rel="noopener">Flutter中文网</a>。</p>
+</blockquote>
+<h1 id="什么是Flutter"><a href="#什么是Flutter" class="headerlink" title="什么是Flutter"></a>什么是Flutter</h1><p>Flutter 是<strong>Google</strong>推出并开源的移动应用开发框架，主打跨平台、高保真、高性能。开发者可以通过<a href="https://www.dartlang.org" target="_blank" rel="noopener"><code>Dart</code></a>语言进行开发App，并且只需要一套代码就可以同时构建Android和iOS应用，并且性能可以达到原生应用一样的性能。Flutter提供了丰富的组件、接口，开发者可以很快地为 Flutter添加native扩展。</p>
+<h1 id="安装Flutter"><a href="#安装Flutter" class="headerlink" title="安装Flutter"></a>安装Flutter</h1><p>在开始使用Flutter之前，当然要先装好Flutter的环境啦。想要开发iOS应用只能在 macOS 上进行，所以这里只讲macOS上的环境搭建。在此之前读者可以先安装好<a href="https://developer.android.google.cn/studio/" target="_blank" rel="noopener">Android Studio</a>和<a href="https://developer.apple.com/xcode/" target="_blank" rel="noopener">Xcode</a>，以及<a href="https://brew.sh/index_zh-cn" target="_blank" rel="noopener">Homebrew</a>。</p>
+<h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><p>要安装并运行Flutter，您的开发环境必须满足以下最低要求:</p>
+<ul>
+<li>操作系统: macOS (64-bit)</li>
+<li>磁盘空间: 700 MB (不包括Xcode或Android Studio的磁盘空间）.</li>
+<li>工具: Flutter 依赖下面这些命令行工具:<ul>
+<li>bash、mkdir、rm、git、curl、unzip、which</li>
+</ul>
+</li>
+</ul>
+<h2 id="获取Flutter"><a href="#获取Flutter" class="headerlink" title="获取Flutter"></a>获取Flutter</h2><ol>
+<li>从<a href="https://flutter.io/sdk-archive/#macos" target="_blank" rel="noopener">Flutter官网</a>下载最新版的可用安装包，官网地址：<a href="https://flutter.io/sdk-archive/#macos" target="_blank" rel="noopener">https://flutter.io/sdk-archive/#macos</a>注意，如果官网上不去，也可以去GitHub的<a href="https://github.com/flutter/flutter/releases" target="_blank" rel="noopener">Flutter项目</a>下去下载安装包，下载地址：<a href="https://github.com/flutter/flutter/releases" target="_blank" rel="noopener">https://github.com/flutter/flutter/releases</a></li>
+<li>解压之前下载下来的安装包到你想要安装的目录下，如</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/flutter</span><br><span class="line">unzip ~/Downloads/flutter_macos_v1.0.0-stable.zip</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>配置环境变量</li>
+</ol>
+<p>编辑Home目录下的.bash_profile文件，添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export PUB_HOSTED_URL=https://pub.flutter-io.cn #镜像地址</span><br><span class="line">export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn #镜像地址</span><br><span class="line">export $FLUTTER_ROOT=/Users/xxx/flutter #xxx是用户名</span><br><span class="line">export PATH=$PATH:$FLUTTER_ROOT/bin</span><br></pre></td></tr></table></figure>
+<p>由于在国内访问Flutter有时可能会受到限制，Flutter官方为中国开发者搭建了临时镜像，此镜像为临时镜像，并不能保证一直可用，读者可以参考<a href="https://github.com/flutter/flutter/wiki/Using-Flutter-in-China" target="_blank" rel="noopener">https://github.com/flutter/flutter/wiki/Using-Flutter-in-China</a> 以获得有关镜像服务器的最新动态。</p>
+<ol start="4">
+<li>配置Android环境</li>
+</ol>
+<p>在安装好Android Studio的前提下，打开Android Stduio，进入Preferences（⌘+,）-&gt; Plugins -&gt; 安装Flutter插件，重启Android Studio</p>
+<ol start="5">
+<li>运行flutter doctor 命令</li>
+</ol>
+<p>在Flutter命令行运行如下命令来查看是否还需要安装其它依赖，如果需要，安装它们：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter doctor</span><br></pre></td></tr></table></figure>
+<p>该命令检查你的环境并在命令行窗口中显示报告。Dart SDK已经在打包在Flutter SDK里了，没有必要单独安装Dart。 仔细检查命令行输出以获取可能需要安装的其他软件或进一步需要执行的任务。<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Doctor summary (to see all details, run flutter doctor -v):</span><br><span class="line">[✓] Flutter (Channel stable, v1.0.0, on Mac OS X 10.14.2 18C54, locale en-CN)</span><br><span class="line">[✓] Android toolchain - develop for Android devices (Android SDK 28.0.3)</span><br><span class="line">[!] iOS toolchain - develop for iOS devices (Xcode 10.1)</span><br><span class="line">    ✗ libimobiledevice and ideviceinstaller are not installed. To install with</span><br><span class="line">      Brew, run:</span><br><span class="line">        brew update</span><br><span class="line">        brew install --HEAD usbmuxd</span><br><span class="line">        brew link usbmuxd</span><br><span class="line">        brew install --HEAD libimobiledevice</span><br><span class="line">        brew install ideviceinstaller</span><br><span class="line">    ✗ ios-deploy not installed. To install with Brew:</span><br><span class="line">        brew install ios-deploy</span><br><span class="line">    ✗ CocoaPods not installed.</span><br><span class="line">        CocoaPods is used to retrieve the iOS platform side&apos;s plugin code that</span><br><span class="line">        responds to your plugin usage on the Dart side.</span><br><span class="line">        Without resolving iOS dependencies with CocoaPods, plugins will not work</span><br><span class="line">        on iOS.</span><br><span class="line">        For more info, see https://flutter.io/platform-plugins</span><br><span class="line">      To install:</span><br><span class="line">        brew install cocoapods</span><br><span class="line">        pod setup</span><br><span class="line">[✓] Android Studio (version 3.2)</span><br><span class="line">[!] Connected device</span><br><span class="line">    ! No devices available</span><br><span class="line"></span><br><span class="line">! Doctor found issues in 2 categories.</span><br></pre></td></tr></table></figure>
+<p>第一次运行一flutter命令（如<code>flutter doctor</code>）时，它会下载它自己的依赖项并自行编译。以后再运行就会快得多。缺失的依赖需要安装一下，安装完成后再运行flutter doctor命令来验证是否安装成功。</p>
+<ol start="6">
+<li>配置iOS环境</li>
+</ol>
+<p>在安装好Xcode的前提下，配置Xcode命令行工具以使用新安装的Xcode版本,确保Xcode许可协议是通过打开一次Xcode或通过命令<code>sudo xcodebuild -license</code>同意过了.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer</span><br><span class="line">sudo xcodebuild -license</span><br></pre></td></tr></table></figure>
+<p>通过步骤5运行<code>flutter doctor</code>得到的结果，可以看到已经提示你需要做的事情了，根据提示，使用<code>brew</code>安装所需要的插件，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew install --HEAD usbmuxd</span><br><span class="line">brew link usbmuxd</span><br><span class="line">brew install --HEAD libimobiledevice</span><br><span class="line">brew install ideviceinstaller</span><br><span class="line">brew install ios-deploy</span><br><span class="line">brew install cocoapods</span><br><span class="line">pod setup</span><br></pre></td></tr></table></figure>
+<p>等待一段时间安装完成后，可以再次运行 <code>flutter doctor</code> 检查，结果显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Doctor summary (to see all details, run flutter doctor -v):</span><br><span class="line">[✓] Flutter (Channel stable, v1.0.0, on Mac OS X 10.14.2 18C54, locale en-CN)</span><br><span class="line">[✓] Android toolchain - develop for Android devices (Android SDK 28.0.3)</span><br><span class="line">[✓] iOS toolchain - develop for iOS devices (Xcode 10.1)</span><br><span class="line">[✓] Android Studio (version 3.2)</span><br><span class="line">[!] Connected device</span><br><span class="line">    ! No devices available</span><br><span class="line"></span><br><span class="line">! Doctor found issues in 1 category.</span><br></pre></td></tr></table></figure>
+<p>其中一个[!]是因为没有连接设备造成的，可以忽略</p>
+<p>至此，Flutter的环境算是安装完成了。</p>
+<h1 id="创建Flutter项目"><a href="#创建Flutter项目" class="headerlink" title="创建Flutter项目"></a>创建Flutter项目</h1><h2 id="使用Terminal方式创建"><a href="#使用Terminal方式创建" class="headerlink" title="使用Terminal方式创建"></a>使用Terminal方式创建</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter create myapp</span><br></pre></td></tr></table></figure>
+<h2 id="使用Android-Studio创建"><a href="#使用Android-Studio创建" class="headerlink" title="使用Android Studio创建"></a>使用Android Studio创建</h2><p>打开Android Studio，选择红框位置</p>
+<p><img src="/blog_images/201812162239.png" alt="使用Android Studio创建Flutter 项目"><br>第一次使用Android Studio创建的话，耐心等待一段时间之后就会弹出一下窗口：<br><img src="/blog_images/201812162246.png" alt="创建工程"><br>之后按照提示操作就可以了。</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年03月17日 14:59</p>
+        <p>原始链接：
+            
+                <a class="post-url" href="/essay/初识Flutter/" title="初识Flutter">https://blog.it9.top/essay/初识Flutter/</a>
+            
+        </p>
+        <footer>
+            <a href="https://blog.it9.top">
+                <img src="/images/logo.jpeg" alt="IT Go">
+                IT Go
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.it9.top/essay/初识Flutter/&title=《初识Flutter》 — IT Go&pic=/blog_images/hot-reload.gif" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.it9.top/essay/初识Flutter/&title=《初识Flutter》 — IT Go&source=瞎搞事，瞎折腾，瞎扯淡" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.it9.top/essay/初识Flutter/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《初识Flutter》 — IT Go&url=https://blog.it9.top/essay/初识Flutter/&via=https://blog.it9.top" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.it9.top/essay/初识Flutter/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://blog.it9.top/essay/初识Flutter/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/flutter/" class="color3">Flutter</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是Flutter"><span class="post-toc-text">什么是Flutter</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装Flutter"><span class="post-toc-text">安装Flutter</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#系统要求"><span class="post-toc-text">系统要求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获取Flutter"><span class="post-toc-text">获取Flutter</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#创建Flutter项目"><span class="post-toc-text">创建Flutter项目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用Terminal方式创建"><span class="post-toc-text">使用Terminal方式创建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用Android-Studio创建"><span class="post-toc-text">使用Android Studio创建</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/essay/Python中的字符串、列表、元组、字典、集合/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Python中的字符串、列表、元组、字典、集合
+        
+      </span>
+    </a>
+  
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="初识Flutter"></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cytXViG69';
+        var conf = 'prod_ec256658191d4702179ffc2efd670f6d';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Copyright &copy; 2019, All Rights Reserved.
+      <br>Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="https://github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+         change by <a href="mailto:xuqingquan1995@gmail.com" target="_blank"> IT Go</a>
+         <br>闽ICP备17032899号-1
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://blog.it9.top",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/essay/">随笔</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>全部</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/categories/essay">
+                    <i class="fa fa-edit"></i><span>随笔</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false}});</script></body>
+</html>

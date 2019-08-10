@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="sogou_site_verification" content="6EV6mkKQug">
+  
+  <title>IT Go</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="瞎搞事的博客">
+  
+  <meta name="description" content="本篇主要描述了Python中的字符串(str)、列表(str)、元组(tuple)、字典(dict)、集合(set)的特点以及使用  字符串(str)字符串的定义定义字符串可以使用单引号&amp;#39;,双引号&amp;quot;,三单引号&amp;#39;&amp;#39;&amp;#39;,三双引号&amp;quot;&amp;quot;&amp;quot;，如下图使用三单引号&amp;#39;&amp;#39;&amp;#39;或三双引号&amp;quot;&amp;quot;&amp;quot;">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python中的字符串、列表、元组、字典、集合">
+<meta property="og:url" content="https://blog.it9.top/essay/Python中的字符串、列表、元组、字典、集合/index.html">
+<meta property="og:site_name" content="IT Go">
+<meta property="og:description" content="本篇主要描述了Python中的字符串(str)、列表(str)、元组(tuple)、字典(dict)、集合(set)的特点以及使用  字符串(str)字符串的定义定义字符串可以使用单引号&amp;#39;,双引号&amp;quot;,三单引号&amp;#39;&amp;#39;&amp;#39;,三双引号&amp;quot;&amp;quot;&amp;quot;，如下图使用三单引号&amp;#39;&amp;#39;&amp;#39;或三双引号&amp;quot;&amp;quot;&amp;quot;">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://blog.it9.top/blog_images/python1-1.jpeg">
+<meta property="og:image" content="https://blog.it9.top/blog_images/python1-2.png">
+<meta property="og:image" content="https://blog.it9.top/blog_images/python1-3.png">
+<meta property="og:updated_time" content="2019-06-16T08:17:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python中的字符串、列表、元组、字典、集合">
+<meta name="twitter:description" content="本篇主要描述了Python中的字符串(str)、列表(str)、元组(tuple)、字典(dict)、集合(set)的特点以及使用  字符串(str)字符串的定义定义字符串可以使用单引号&amp;#39;,双引号&amp;quot;,三单引号&amp;#39;&amp;#39;&amp;#39;,三双引号&amp;quot;&amp;quot;&amp;quot;，如下图使用三单引号&amp;#39;&amp;#39;&amp;#39;或三双引号&amp;quot;&amp;quot;&amp;quot;">
+<meta name="twitter:image" content="https://blog.it9.top/blog_images/python1-1.jpeg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+<script>
+ (function() {
+    var src;
+    if (document.location.protocol == "http:") {
+        src = "http://js.passport.qihucdn.com/11.0.1.js?55d431fa6c5ac2f680df02398a4e06a6";
+    } else {
+        src = "https://jspassport.ssl.qhimg.com/11.0.1.js?55d431fa6c5ac2f680df02398a4e06a6";
+    }
+    document.write('<script src="' + src + '" id="sozz"><\/script>');
+    console.log("360push");
+})(); (function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+    console.log("baidupush");
+})();
+</script>
+  
+
+  
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?73ea46c1b5fcdd8bdba5763824704213";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IT Go</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>全部</span>
+                    </a>
+                    
+                    <a href="/categories/essay">
+                        <i class="fa fa-edit"></i>
+                        <span>随笔</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.jpeg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        瞎搞事
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        瞎搞事，瞎折腾，瞎扯淡
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="博客" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="GitHub" target="_blank" href="//github.com/xuqingquan1995">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="tencent://message/?uin=1324569122&Menu=yes&Service=300&sigT=42a1e5347953b64c5ff3980f8a6e644d4b31456cb0b6ac6b27663a3c4dd0f4aa14a543b1716f9d45">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="mailto:xuqingquan1995@gmail.com">
+                            <i class="fa fa-envelope fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Python中的字符串、列表、元组、字典、集合" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Python中的字符串、列表、元组、字典、集合
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/随笔/">随笔</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-06-16
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <blockquote>
+<p>本篇主要描述了Python中的字符串(str)、列表(str)、元组(tuple)、字典(dict)、集合(set)的特点以及使用</p>
+</blockquote>
+<h2 id="字符串-str"><a href="#字符串-str" class="headerlink" title="字符串(str)"></a>字符串(str)</h2><h3 id="字符串的定义"><a href="#字符串的定义" class="headerlink" title="字符串的定义"></a>字符串的定义</h3><p>定义字符串可以使用单引号<code>&#39;</code>,双引号<code>&quot;</code>,三单引号<code>&#39;&#39;&#39;</code>,三双引号<code>&quot;&quot;&quot;</code>，如下图<br><img src="/blog_images/python1-1.jpeg" alt="定义字符串"><br>使用三单引号<code>&#39;&#39;&#39;</code>或三双引号<code>&quot;&quot;&quot;</code>可以实现多行文本</p>
+<h3 id="字符串的连接"><a href="#字符串的连接" class="headerlink" title="字符串的连接"></a>字符串的连接</h3><p>Python中的字符串连接可以使用<code>+</code>号来实现<br><img src="/blog_images/python1-2.png" alt="连接字符串"><br>但是<code>+</code>号只能够连接两个字符串，如果要实现字符串与其他类型的值连接，例如int型，则需要把int数据通过<code>str()</code>函数或者是<code>repr()</code>函数将int数据转为字符串后才能够实现连接，如下图<br><img src="/blog_images/python1-3.png" alt="连接字符串"></p>
+<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><p>转义字符并不是只有Python才有的，跟其他语言一样，Python可以使用转义字符来表示一些特殊的字符，下表是一些常用的转义字符</p>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\(在行尾时)</td>
+<td>续行符</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>反斜杠符号</td>
+</tr>
+<tr>
+<td>\’</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\”</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>响铃</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格(Backspace)</td>
+</tr>
+<tr>
+<td>\000</td>
+<td>空</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>纵向制表符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页</td>
+</tr>
+<tr>
+<td>\oyy</td>
+<td>八进制数，yy代表的字符，例如：\o12代表换行</td>
+</tr>
+<tr>
+<td>\xyy</td>
+<td>十六进制数，yy代表的字符，例如：\x0a代表换行</td>
+</tr>
+<tr>
+<td>\other</td>
+<td>其它的字符以普通格式输出</td>
+</tr>
+</tbody>
+</table>
+<h3 id="索引和切片"><a href="#索引和切片" class="headerlink" title="索引和切片"></a>索引和切片</h3><p>字符串是由一个或多个字符组成的有序的值，如下图，<code>0</code>就是字符串<code>p</code>的索引,字母<code>i</code>的索引就是<code>7</code>,索引可以从左到又，索引值从0开始，也可以从右到左，索引值从-1开始<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s6=<span class="string">'python is good'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s6[<span class="number">1</span>]</span><br><span class="line"><span class="string">'y'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s6.index(<span class="string">'i'</span>)</span><br><span class="line"><span class="number">7</span></span><br></pre></td></tr></table></figure></p>
+<p>如果需要截取字符串中的部分字符串，截取出来的可以称之为切片<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s6[<span class="number">2</span>:<span class="number">11</span>]</span><br><span class="line"><span class="string">'thon is g'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s6[<span class="number">2</span>:]</span><br><span class="line"><span class="string">'thon is good'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s6[:<span class="number">7</span>]</span><br><span class="line"><span class="string">'python '</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s6[:<span class="number">99</span>]</span><br><span class="line"><span class="string">'python is good'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s6[<span class="number">-8</span>:<span class="number">-4</span>]</span><br><span class="line"><span class="string">' is '</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s6[<span class="number">-8</span>:]</span><br><span class="line"><span class="string">' is good'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s6[:<span class="number">-4</span>]</span><br><span class="line"><span class="string">'python is '</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s6[<span class="number">1</span>:<span class="number">11</span>:<span class="number">2</span>]</span><br><span class="line"><span class="string">'yhni '</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>s6[2:11]</code>表示字符串s6取索引值为2-10的字符</li>
+<li><code>s6[2:]</code>表示取索引值为2之后的字符</li>
+<li><code>s6[:7]</code>表示取索引值为7之前的字符</li>
+<li><code>s6[:99]</code>当索引值超出之后，则会取得所有字符，但是并不提倡这样做</li>
+<li><code>s6[-8:-4]</code>表示从右到左，取-8到-4之间到字符其实<code>s6[-8:-4]=s6[len(s6)-8:len(s6)-4]=s6[14-8:14-4]=s6[6:10]</code></li>
+<li><code>s6[-8:]</code>表示从右到左，取索引值为-8之后到所有字符</li>
+<li><code>s6[:-4]</code>表示从右到左取索引值为-4之前到所有字符</li>
+<li><code>s6[1:11:2]</code>表示取索引值为1-10之间的字符，步长为2<h2 id="列表-list"><a href="#列表-list" class="headerlink" title="列表(list)"></a>列表(list)</h2><h3 id="列表的定义"><a href="#列表的定义" class="headerlink" title="列表的定义"></a>列表的定义</h3>在Python中，列表使用方括号<code>[]</code>定义，相对其他语言，Python的列表中元素并不会限定必须类型统一,列表的内容可以是字符串，数字，甚至是一个列表，元组，字典或者是集合<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1=[]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append(<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append(<span class="string">"str"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append([<span class="string">"list1"</span>,<span class="string">"list2"</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append((<span class="string">"123"</span>,<span class="number">123</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append(&#123;<span class="string">"456"</span>:<span class="number">456</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append(set(<span class="string">'test'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1</span><br><span class="line">[<span class="number">1</span>, <span class="string">'str'</span>, [<span class="string">'list1'</span>, <span class="string">'list2'</span>], (<span class="string">'123'</span>, <span class="number">123</span>), &#123;<span class="string">'456'</span>: <span class="number">456</span>&#125;, &#123;<span class="string">'s'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>&#125;]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(l1[<span class="number">0</span>])</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">int</span>'&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span><span class="params">(l1[<span class="number">1</span>])</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">str</span>'&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span><span class="params">(l1[<span class="number">2</span>])</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">list</span>'&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span><span class="params">(l1[<span class="number">3</span>])</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">tuple</span>'&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span><span class="params">(l1[<span class="number">4</span>])</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">dict</span>'&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span><span class="params">(l1[<span class="number">5</span>])</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">set</span>'&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="索引和切片-1"><a href="#索引和切片-1" class="headerlink" title="索引和切片"></a>索引和切片</h3><p>列表和字符串一样，都有索引和切片，但与字符串不同但是，列表但索引得到但是列表中的一个项<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1[<span class="number">0</span>]</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1[<span class="number">1</span>]</span><br><span class="line"><span class="string">'str'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1[<span class="number">2</span>:<span class="number">4</span>]</span><br><span class="line">[[<span class="string">'list1'</span>, <span class="string">'list2'</span>], (<span class="string">'123'</span>, <span class="number">123</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1[:<span class="number">4</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="string">'str'</span>, [<span class="string">'list1'</span>, <span class="string">'list2'</span>], (<span class="string">'123'</span>, <span class="number">123</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1[<span class="number">2</span>:]</span><br><span class="line">[[<span class="string">'list1'</span>, <span class="string">'list2'</span>], (<span class="string">'123'</span>, <span class="number">123</span>), &#123;<span class="string">'456'</span>: <span class="number">456</span>&#125;, &#123;<span class="string">'s'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>&#125;]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1[<span class="number">-1</span>:]</span><br><span class="line">[&#123;<span class="string">'s'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>&#125;]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1[:<span class="number">-1</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="string">'str'</span>, [<span class="string">'list1'</span>, <span class="string">'list2'</span>], (<span class="string">'123'</span>, <span class="number">123</span>), &#123;<span class="string">'456'</span>: <span class="number">456</span>&#125;]</span><br></pre></td></tr></table></figure></p>
+<h3 id="列表的操作"><a href="#列表的操作" class="headerlink" title="列表的操作"></a>列表的操作</h3><h4 id="列表的反转"><a href="#列表的反转" class="headerlink" title="列表的反转"></a>列表的反转</h4><p>列表反转在实际编程中也是比较常见的，可以通过以下方式对列表进行反转<br><code>reverse()</code>会将列表内容进行反转<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1</span><br><span class="line">[<span class="number">1</span>, <span class="string">'str'</span>, [<span class="string">'list1'</span>, <span class="string">'list2'</span>], (<span class="string">'123'</span>, <span class="number">123</span>), &#123;<span class="string">'456'</span>: <span class="number">456</span>&#125;, &#123;<span class="string">'s'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>&#125;]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1[::<span class="number">-1</span>]</span><br><span class="line">[&#123;<span class="string">'s'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>&#125;, &#123;<span class="string">'456'</span>: <span class="number">456</span>&#125;, (<span class="string">'123'</span>, <span class="number">123</span>), [<span class="string">'list1'</span>, <span class="string">'list2'</span>], <span class="string">'str'</span>, <span class="number">1</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(reversed(l1))</span><br><span class="line">[&#123;<span class="string">'s'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>&#125;, &#123;<span class="string">'456'</span>: <span class="number">456</span>&#125;, (<span class="string">'123'</span>, <span class="number">123</span>), [<span class="string">'list1'</span>, <span class="string">'list2'</span>], <span class="string">'str'</span>, <span class="number">1</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1</span><br><span class="line">[<span class="number">1</span>, <span class="string">'str'</span>, [<span class="string">'list1'</span>, <span class="string">'list2'</span>], (<span class="string">'123'</span>, <span class="number">123</span>), &#123;<span class="string">'456'</span>: <span class="number">456</span>&#125;, &#123;<span class="string">'s'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>&#125;]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.reverse()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1</span><br><span class="line">[&#123;<span class="string">'s'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>&#125;, &#123;<span class="string">'456'</span>: <span class="number">456</span>&#125;, (<span class="string">'123'</span>, <span class="number">123</span>), [<span class="string">'list1'</span>, <span class="string">'list2'</span>], <span class="string">'str'</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure></p>
+<h4 id="列表的长度，最大值，最小值，添加，删除"><a href="#列表的长度，最大值，最小值，添加，删除" class="headerlink" title="列表的长度，最大值，最小值，添加，删除"></a>列表的长度，最大值，最小值，添加，删除</h4><p>在列表中，可以通过<code>len()</code>获取列表的长度，通过<code>max()</code>获取列表的最大值,<code>min()</code>获取列表的最小值，<code>append()</code>函数进行列表的增加数据，<code>insert()</code>函数添加到列表中到指定位置，<code>remove()</code>函数删除某个项,<code>pop()</code>可以删除最后一项,可以通过<code>*</code>重复列表中的数据<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2=[<span class="number">5</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(l2)</span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>max(l2)</span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>min(l2)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2.append(<span class="string">"addItem"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2.remove(<span class="string">"addItem"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2.insert(<span class="number">0</span>,<span class="number">99</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2</span><br><span class="line">[<span class="number">99</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2.pop()</span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2*<span class="number">2</span></span><br><span class="line">[<span class="number">99</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">99</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br></pre></td></tr></table></figure></p>
+<h4 id="列表的连接"><a href="#列表的连接" class="headerlink" title="列表的连接"></a>列表的连接</h4><p>列表可以通过<code>+</code>号进行连接，可以使用<code>extend()</code>将一个列表的内容添加到另一个列表中,通过以下代码可以得知，使用<code>+</code>号操作并不会改变原列表到值，使用<code>extend()</code>则会将原列表到值改变了<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2</span><br><span class="line">[<span class="number">5</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3</span><br><span class="line">[<span class="string">'l3-1'</span>, <span class="string">'l3-2'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2+l3</span><br><span class="line">[<span class="number">5</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="string">'l3-1'</span>, <span class="string">'l3-2'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2</span><br><span class="line">[<span class="number">5</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3</span><br><span class="line">[<span class="string">'l3-1'</span>, <span class="string">'l3-2'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2.extend(l3)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2</span><br><span class="line">[<span class="number">5</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="string">'l3-1'</span>, <span class="string">'l3-2'</span>]</span><br></pre></td></tr></table></figure></p>
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>在Python中元组跟列表有点相似，但又有其特殊性，列表是可以增加修改删除的，但是元组是不可变的，不能够进行增加伤处修改等操作</p>
+<h3 id="元组的定义"><a href="#元组的定义" class="headerlink" title="元组的定义"></a>元组的定义</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t1=<span class="number">123</span>,<span class="string">'abc'</span>,[<span class="string">'aaa'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(t1)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">tuple</span>'&gt;</span></span><br><span class="line">&gt;&gt;&gt; t2=(123,'abc',['aaa'])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(t2)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">tuple</span>'&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="索引和切片-2"><a href="#索引和切片-2" class="headerlink" title="索引和切片"></a>索引和切片</h3><p>因为元组跟list相似,且元组也是有序等，所以元组也有索引和切片<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t3=(<span class="number">123</span>,<span class="string">'abc'</span>,[<span class="string">'aaa'</span>],&#123;<span class="string">"asda"</span>,<span class="string">"test"</span>&#125;,<span class="number">3.3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t3[<span class="number">0</span>]</span><br><span class="line"><span class="number">123</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t3[<span class="number">1</span>:]</span><br><span class="line">(<span class="string">'abc'</span>, [<span class="string">'aaa'</span>], &#123;<span class="string">'test'</span>, <span class="string">'asda'</span>&#125;, <span class="number">3.3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t3[:<span class="number">-3</span>]</span><br><span class="line">(<span class="number">123</span>, <span class="string">'abc'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><h3 id="字典的定义"><a href="#字典的定义" class="headerlink" title="字典的定义"></a>字典的定义</h3><p>字典定义的方式比较多，以下列出其中几种方法</p>
+<ol>
+<li><p>构建空字典，然后向里面添加数据 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d1=&#123;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(d1)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">dict</span>'&gt;</span></span><br><span class="line">&gt;&gt;&gt; d1[1]=123</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d1[<span class="string">'2'</span>]=<span class="string">"456"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d1[<span class="string">"a"</span>]=<span class="number">789</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d1</span><br><span class="line">&#123;<span class="number">1</span>: <span class="number">123</span>, <span class="string">'2'</span>: <span class="string">'456'</span>, <span class="string">'a'</span>: <span class="number">789</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接构建非空字典</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d2=&#123;<span class="string">"name"</span>:<span class="string">"username"</span>,<span class="string">'age'</span>:<span class="number">18</span>,<span class="string">'list'</span>:[<span class="string">"item1"</span>,<span class="string">"item2"</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(d2)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">dict</span>'&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">d2</span></span></span><br><span class="line">&#123;'name': 'username', 'age': 18, 'list': ['item1', 'item2']&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用元组构建字典</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t3=([<span class="string">"key1"</span>,<span class="string">"value1"</span>],[<span class="string">"key2"</span>,<span class="string">"value2"</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d3=dict(t3)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d3</span><br><span class="line">&#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(d3)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">dict</span>'&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接使用key=value方式构建</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4=dict(id=<span class="string">'1'</span>,age=<span class="number">1</span>,name=<span class="string">'test'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(d4)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">dict</span>'&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">d4</span></span></span><br><span class="line">&#123;'id': '1', 'age': 1, 'name': 'test'&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="字典的操作"><a href="#字典的操作" class="headerlink" title="字典的操作"></a>字典的操作</h3><ul>
+<li><code>d[key]</code>可以得到字典对应key的值，当key不存在则报错</li>
+<li><code>d[key]=value</code>将value付给字典对应key</li>
+<li><code>len(d)</code>返回字典中键值对的数量 </li>
+<li><code>key in d</code> 检查字典中是否含有键为key的值</li>
+<li><code>del d[key]</code>删除字典中含有键为key的像 </li>
+<li><code>d.get(key,defaultvalue)</code>可以获取字典中对应key的值，当key不存在时，如果defaultvalue没有传，则返回None，否则返回defaultvalue</li>
+<li><code>d.setdefault(key,defaultvalue)</code>如果字典中不存在对应的key，则添加对应的key，defaultvalue不填时，value为None，否则为defaultvalue</li>
+<li><code>d.clear()</code>清空字典里面的内容</li>
+<li><code>pop(key)</code>和<code>popitem()</code>都可以删除字典中的内容，pop需要传入对应的key，popitem则随机删除一对键值对<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4[<span class="string">'id'</span>]</span><br><span class="line"><span class="string">'1'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4[<span class="string">'id'</span>]=<span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(d4)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'id'</span> <span class="keyword">in</span> d4</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4</span><br><span class="line">&#123;<span class="string">'id'</span>: <span class="number">2</span>, <span class="string">'age'</span>: <span class="number">1</span>, <span class="string">'name'</span>: <span class="string">'test'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> d4[<span class="string">'id'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">1</span>, <span class="string">'name'</span>: <span class="string">'test'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4.get(<span class="string">'age'</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4.get(<span class="string">'id'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4.get(<span class="string">'id'</span>,<span class="string">'-1'</span>)</span><br><span class="line"><span class="string">'-1'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">1</span>, <span class="string">'name'</span>: <span class="string">'test'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4.setdefault(<span class="string">'id'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">1</span>, <span class="string">'name'</span>: <span class="string">'test'</span>, <span class="string">'id'</span>: <span class="keyword">None</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4.setdefault(<span class="string">'id1'</span>,<span class="number">1</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">1</span>, <span class="string">'name'</span>: <span class="string">'test'</span>, <span class="string">'id'</span>: <span class="keyword">None</span>, <span class="string">'id1'</span>: <span class="number">1</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4.clear()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d4</span><br><span class="line">&#123;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d5=&#123;<span class="string">'id'</span>: <span class="number">2</span>, <span class="string">'age'</span>: <span class="number">1</span>, <span class="string">'name'</span>: <span class="string">'test'</span>,<span class="number">1</span>:<span class="number">999</span>,<span class="number">2</span>:<span class="number">666</span>,<span class="number">3</span>:<span class="number">777</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d5.pop(<span class="string">'id'</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d5</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">1</span>, <span class="string">'name'</span>: <span class="string">'test'</span>, <span class="number">1</span>: <span class="number">999</span>, <span class="number">2</span>: <span class="number">666</span>, <span class="number">3</span>: <span class="number">777</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d5.popitem()</span><br><span class="line">(<span class="number">3</span>, <span class="number">777</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d5</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">1</span>, <span class="string">'name'</span>: <span class="string">'test'</span>, <span class="number">1</span>: <span class="number">999</span>, <span class="number">2</span>: <span class="number">666</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="字典的copy"><a href="#字典的copy" class="headerlink" title="字典的copy"></a>字典的copy</h3><p>字典可以通过<code>copy()方法进行拷贝</code>，且对其中的一个简直对进行修改并不会影响到原来的字典<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d6=&#123;<span class="number">1</span>:<span class="number">1</span>,<span class="number">2</span>:<span class="number">2.2</span>,<span class="string">'3'</span>:<span class="string">'3'</span>,<span class="string">'l'</span>:[<span class="number">123</span>,<span class="string">'123'</span>,<span class="string">'456'</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d6</span><br><span class="line">&#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">2</span>: <span class="number">2.2</span>, <span class="string">'3'</span>: <span class="string">'3'</span>, <span class="string">'l'</span>: [<span class="number">123</span>, <span class="string">'123'</span>, <span class="string">'456'</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d7=d6.copy()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d7</span><br><span class="line">&#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">2</span>: <span class="number">2.2</span>, <span class="string">'3'</span>: <span class="string">'3'</span>, <span class="string">'l'</span>: [<span class="number">123</span>, <span class="string">'123'</span>, <span class="string">'456'</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d7[<span class="number">1</span>]=<span class="string">'999'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d7</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">'999'</span>, <span class="number">2</span>: <span class="number">2.2</span>, <span class="string">'3'</span>: <span class="string">'3'</span>, <span class="string">'l'</span>: [<span class="number">123</span>, <span class="string">'123'</span>, <span class="string">'456'</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d6</span><br><span class="line">&#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">2</span>: <span class="number">2.2</span>, <span class="string">'3'</span>: <span class="string">'3'</span>, <span class="string">'l'</span>: [<span class="number">123</span>, <span class="string">'123'</span>, <span class="string">'456'</span>]&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是如果如果是修改列表的话，那么就会出现两个字典的列表内容一起修改了，因为这种拷贝只是浅拷贝，两个字典中的列表地址其实是一样的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d7[<span class="string">'l'</span>].append(<span class="number">74125</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d7</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">'999'</span>, <span class="number">2</span>: <span class="number">2.2</span>, <span class="string">'3'</span>: <span class="string">'3'</span>, <span class="string">'l'</span>: [<span class="number">123</span>, <span class="string">'123'</span>, <span class="string">'456'</span>, <span class="number">74125</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d6</span><br><span class="line">&#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">2</span>: <span class="number">2.2</span>, <span class="string">'3'</span>: <span class="string">'3'</span>, <span class="string">'l'</span>: [<span class="number">123</span>, <span class="string">'123'</span>, <span class="string">'456'</span>, <span class="number">74125</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(d6[<span class="string">'l'</span>])</span><br><span class="line"><span class="number">4540976712</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(d7[<span class="string">'l'</span>])</span><br><span class="line"><span class="number">4540976712</span></span><br></pre></td></tr></table></figure></p>
+<p>如果需要实现深拷贝，则需要导入copy模块，使用<code>deepcopy()</code>函数进行深拷贝<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d7</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">'999'</span>, <span class="number">2</span>: <span class="number">2.2</span>, <span class="string">'3'</span>: <span class="string">'3'</span>, <span class="string">'l'</span>: [<span class="number">123</span>, <span class="string">'123'</span>, <span class="string">'456'</span>, <span class="number">74125</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> copy</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d8=copy.deepcopy(d7)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d8</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">'999'</span>, <span class="number">2</span>: <span class="number">2.2</span>, <span class="string">'3'</span>: <span class="string">'3'</span>, <span class="string">'l'</span>: [<span class="number">123</span>, <span class="string">'123'</span>, <span class="string">'456'</span>, <span class="number">74125</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d8[<span class="string">'l'</span>].append(<span class="string">'append'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d8</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">'999'</span>, <span class="number">2</span>: <span class="number">2.2</span>, <span class="string">'3'</span>: <span class="string">'3'</span>, <span class="string">'l'</span>: [<span class="number">123</span>, <span class="string">'123'</span>, <span class="string">'456'</span>, <span class="number">74125</span>, <span class="string">'append'</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d7</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">'999'</span>, <span class="number">2</span>: <span class="number">2.2</span>, <span class="string">'3'</span>: <span class="string">'3'</span>, <span class="string">'l'</span>: [<span class="number">123</span>, <span class="string">'123'</span>, <span class="string">'456'</span>, <span class="number">74125</span>]&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="集合的定义"><a href="#集合的定义" class="headerlink" title="集合的定义"></a>集合的定义</h3><p>以下为集合的定义方式，集合会自动去除重复的数据，且集合中元素是无需的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1=set(<span class="string">'fglsdfglsfghalerwer'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">&#123;<span class="string">'a'</span>, <span class="string">'r'</span>, <span class="string">'d'</span>, <span class="string">'h'</span>, <span class="string">'w'</span>, <span class="string">'s'</span>, <span class="string">'e'</span>, <span class="string">'g'</span>, <span class="string">'f'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2=set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">58</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">6</span>,<span class="number">9</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">58</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="集合的操作"><a href="#集合的操作" class="headerlink" title="集合的操作"></a>集合的操作</h3><ul>
+<li>集合可以通过<code>add()</code>实现对集合的添加</li>
+<li>通过<code>update()</code>可以把一个集合里的数据添加到另一个集合里面</li>
+<li><code>pop()</code> 可以随机的删除集合中到一个元素</li>
+<li><code>remove()</code>可以删除集合中指定元素，如果元素不存在则报错</li>
+<li><code>discard()</code>可以删除集合中指定元素，如果元素不存在则返回None</li>
+<li><code>clear()</code>可以清空集合所有元素<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2.add(<span class="string">'test'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="string">'test'</span>, <span class="number">58</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">&#123;<span class="string">'a'</span>, <span class="string">'r'</span>, <span class="string">'d'</span>, <span class="string">'h'</span>, <span class="string">'w'</span>, <span class="string">'s'</span>, <span class="string">'e'</span>, <span class="string">'g'</span>, <span class="string">'f'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.update(s2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="string">'h'</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="string">'test'</span>, <span class="string">'e'</span>, <span class="string">'d'</span>, <span class="string">'a'</span>, <span class="string">'r'</span>, <span class="string">'w'</span>, <span class="string">'s'</span>, <span class="string">'g'</span>, <span class="string">'f'</span>, <span class="number">58</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="string">'test'</span>, <span class="number">58</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.pop()</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.remove(<span class="string">'test'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="string">'h'</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="string">'e'</span>, <span class="string">'a'</span>, <span class="string">'w'</span>, <span class="string">'s'</span>, <span class="string">'g'</span>, <span class="number">58</span>, <span class="string">'d'</span>, <span class="string">'r'</span>, <span class="string">'f'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.discard(<span class="string">'r'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="string">'h'</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="string">'e'</span>, <span class="string">'a'</span>, <span class="string">'w'</span>, <span class="string">'s'</span>, <span class="string">'g'</span>, <span class="number">58</span>, <span class="string">'d'</span>, <span class="string">'f'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.clear()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set()</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年06月16日 16:17</p>
+        <p>原始链接：
+            
+                <a class="post-url" href="/essay/Python中的字符串、列表、元组、字典、集合/" title="Python中的字符串、列表、元组、字典、集合">https://blog.it9.top/essay/Python中的字符串、列表、元组、字典、集合/</a>
+            
+        </p>
+        <footer>
+            <a href="https://blog.it9.top">
+                <img src="/images/logo.jpeg" alt="IT Go">
+                IT Go
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.it9.top/essay/Python中的字符串、列表、元组、字典、集合/&title=《Python中的字符串、列表、元组、字典、集合》 — IT Go&pic=https://www.python.org/static/img/python-logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.it9.top/essay/Python中的字符串、列表、元组、字典、集合/&title=《Python中的字符串、列表、元组、字典、集合》 — IT Go&source=瞎搞事，瞎折腾，瞎扯淡" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.it9.top/essay/Python中的字符串、列表、元组、字典、集合/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python中的字符串、列表、元组、字典、集合》 — IT Go&url=https://blog.it9.top/essay/Python中的字符串、列表、元组、字典、集合/&via=https://blog.it9.top" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.it9.top/essay/Python中的字符串、列表、元组、字典、集合/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://blog.it9.top/essay/Python中的字符串、列表、元组、字典、集合/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags//" class="color2">Python</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串-str"><span class="post-toc-text">字符串(str)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符串的定义"><span class="post-toc-text">字符串的定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符串的连接"><span class="post-toc-text">字符串的连接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#转义字符"><span class="post-toc-text">转义字符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引和切片"><span class="post-toc-text">索引和切片</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#列表-list"><span class="post-toc-text">列表(list)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#列表的定义"><span class="post-toc-text">列表的定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引和切片-1"><span class="post-toc-text">索引和切片</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#列表的操作"><span class="post-toc-text">列表的操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#列表的反转"><span class="post-toc-text">列表的反转</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#列表的长度，最大值，最小值，添加，删除"><span class="post-toc-text">列表的长度，最大值，最小值，添加，删除</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#列表的连接"><span class="post-toc-text">列表的连接</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元组"><span class="post-toc-text">元组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#元组的定义"><span class="post-toc-text">元组的定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引和切片-2"><span class="post-toc-text">索引和切片</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字典"><span class="post-toc-text">字典</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字典的定义"><span class="post-toc-text">字典的定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字典的操作"><span class="post-toc-text">字典的操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字典的copy"><span class="post-toc-text">字典的copy</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#集合"><span class="post-toc-text">集合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#集合的定义"><span class="post-toc-text">集合的定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#集合的操作"><span class="post-toc-text">集合的操作</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/essay/初识Flutter/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">初识Flutter</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="Python中的字符串、列表、元组、字典、集合"></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cytXViG69';
+        var conf = 'prod_ec256658191d4702179ffc2efd670f6d';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Copyright &copy; 2019, All Rights Reserved.
+      <br>Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="https://github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+         change by <a href="mailto:xuqingquan1995@gmail.com" target="_blank"> IT Go</a>
+         <br>闽ICP备17032899号-1
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://blog.it9.top",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/essay/">随笔</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>全部</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/categories/essay">
+                    <i class="fa fa-edit"></i><span>随笔</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false}});</script></body>
+</html>
