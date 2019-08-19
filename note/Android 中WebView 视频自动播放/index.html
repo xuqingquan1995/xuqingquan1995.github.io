@@ -9,17 +9,18 @@
   
     <meta name="keywords" content="瞎搞事的博客">
   
-  <meta name="description" content="瞎搞事，瞎折腾，瞎扯淡">
-<meta name="keywords" content="IT Go">
-<meta property="og:type" content="website">
-<meta property="og:title" content="IT Go">
-<meta property="og:url" content="https://blog.it9.top/archives/2019/index.html">
+  <meta name="description" content="如果有使用过Android的WebView 播放视频的伙伴们一定会发现，在点开视频网页的时候并没有自动播放，那么，这时候如果要实现打开网页自动播放视频的话该怎么做呢？ 1webView.getSettings().setMediaPlaybackRequiresUserGesture(false); 一句话解决 查看源码1234567/** * Sets whether the WebView r">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 中WebView 视频自动播放">
+<meta property="og:url" content="https://blog.it9.top/note/Android 中WebView 视频自动播放/index.html">
 <meta property="og:site_name" content="IT Go">
-<meta property="og:description" content="瞎搞事，瞎折腾，瞎扯淡">
+<meta property="og:description" content="如果有使用过Android的WebView 播放视频的伙伴们一定会发现，在点开视频网页的时候并没有自动播放，那么，这时候如果要实现打开网页自动播放视频的话该怎么做呢？ 1webView.getSettings().setMediaPlaybackRequiresUserGesture(false); 一句话解决 查看源码1234567/** * Sets whether the WebView r">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-19T15:52:48.750Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IT Go">
-<meta name="twitter:description" content="瞎搞事，瞎折腾，瞎扯淡">
+<meta name="twitter:title" content="Android 中WebView 视频自动播放">
+<meta name="twitter:description" content="如果有使用过Android的WebView 播放视频的伙伴们一定会发现，在点开视频网页的时候并没有自动播放，那么，这时候如果要实现打开网页自动播放视频的话该怎么做呢？ 1webView.getSettings().setMediaPlaybackRequiresUserGesture(false); 一句话解决 查看源码1234567/** * Sets whether the WebView r">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -153,35 +154,155 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap">
-  
-  
+        <section id="main" class="body-wrap"><article id="post-Android 中WebView 视频自动播放" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/Android 中WebView 视频自动播放/" class="archive-article-date">
-  <time datetime="2019-08-19T15:45:39.000Z" itemprop="datePublished">08-19</time>
-</a>
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/Android 中WebView 视频自动播放/">Android 中WebView 视频自动播放</a>
+    <h1 class="post-title" itemprop="name">
+      Android 中WebView 视频自动播放
     </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/小知识/">小知识</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-08-19
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
   
 
-    </header>
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
       
-        <div class="archive-post-footer">
+            
+            <p>如果有使用过<code>Android</code>的<code>WebView</code> 播放视频的伙伴们一定会发现，在点开视频网页的时候并没有自动播放，那么，这时候如果要实现打开网页自动播放视频的话该怎么做呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webView.getSettings().setMediaPlaybackRequiresUserGesture(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+<p>一句话解决</p>
+<p>查看源码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sets whether the WebView requires a user gesture to play media.</span></span><br><span class="line"><span class="comment"> * The default is &#123;<span class="doctag">@code</span> true&#125;.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> require whether the WebView requires a user gesture to play media</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setMediaPlaybackRequiresUserGesture</span><span class="params">(<span class="keyword">boolean</span> require)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>更具体的大家可以自己追溯源码查看更多内容哦</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年08月19日 23:52</p>
+        <p>原始链接：
+            
+                <a class="post-url" href="/note/Android 中WebView 视频自动播放/" title="Android 中WebView 视频自动播放">https://blog.it9.top/note/Android 中WebView 视频自动播放/</a>
+            
+        </p>
+        <footer>
+            <a href="https://blog.it9.top">
+                <img src="/images/logo.jpeg" alt="IT Go">
+                IT Go
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.it9.top/note/Android 中WebView 视频自动播放/&title=《Android 中WebView 视频自动播放》 — IT Go&pic=https://blog.it9.top/images/logo.jpeg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.it9.top/note/Android 中WebView 视频自动播放/&title=《Android 中WebView 视频自动播放》 — IT Go&source=瞎搞事，瞎折腾，瞎扯淡" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.it9.top/note/Android 中WebView 视频自动播放/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 中WebView 视频自动播放》 — IT Go&url=https://blog.it9.top/note/Android 中WebView 视频自动播放/&via=https://blog.it9.top" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.it9.top/note/Android 中WebView 视频自动播放/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://blog.it9.top/note/Android 中WebView 视频自动播放/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
@@ -190,48 +311,36 @@
       
   </li>
 
-        </div>
-      
+        </ul>
+        
+    </footer>
   </div>
 </article>
 
+
+
+<nav id="article-nav">
   
+  
+    <a href="/essay/Python中的字符串、列表、元组、字典、集合/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Python中的字符串、列表、元组、字典、集合</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
     
+        <div id="SOHUCS" sid="Android 中WebView 视频自动播放"></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cytXViG69';
+        var conf = 'prod_ec256658191d4702179ffc2efd670f6d';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/Python中的字符串、列表、元组、字典、集合/" class="archive-article-date">
-  <time datetime="2019-06-16T03:45:11.000Z" itemprop="datePublished">06-16</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/Python中的字符串、列表、元组、字典、集合/">Python中的字符串、列表、元组、字典、集合</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/python/" class="color2">Python</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-  
-    </div></section>
-  
-
 </section>
         
       </div>
