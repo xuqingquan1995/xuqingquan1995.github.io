@@ -159,10 +159,10 @@
 </header>
       <div class="outer">
         <section id="main" class="body-wrap"><article id="post-Python中的字符串、列表、元组、字典、集合" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
+    <div class="article-inner">
         
+        <header class="article-header">
+            
   
     <h1 class="post-title" itemprop="name">
       Python中的字符串、列表、元组、字典、集合
@@ -188,13 +188,13 @@
     </div>
   
 
-          
-      </header>
-    
-    <div class="article-entry post-content" itemprop="articleBody">
-      
             
-            <blockquote>
+        </header>
+        
+        <div class="article-entry post-content" itemprop="articleBody">
+            
+                
+                <blockquote>
 <p>本篇主要描述了Python中的字符串(str)、列表(str)、元组(tuple)、字典(dict)、集合(set)的特点以及使用</p>
 </blockquote>
 <h2 id="字符串-str"><a href="#字符串-str" class="headerlink" title="字符串(str)"></a>字符串(str)</h2><h3 id="字符串的定义"><a href="#字符串的定义" class="headerlink" title="字符串的定义"></a>字符串的定义</h3><p>定义字符串可以使用单引号<code>&#39;</code>,双引号<code>&quot;</code>,三单引号<code>&#39;&#39;&#39;</code>,三双引号<code>&quot;&quot;&quot;</code>，如下图<br><img src="/blog_images/python1-1.jpeg" alt="定义字符串"><br>使用三单引号<code>&#39;&#39;&#39;</code>或三双引号<code>&quot;&quot;&quot;</code>可以实现多行文本</p>
@@ -330,7 +330,7 @@
 <li><code>clear()</code>可以清空集合所有元素<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2.add(<span class="string">'test'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="string">'test'</span>, <span class="number">58</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">&#123;<span class="string">'a'</span>, <span class="string">'r'</span>, <span class="string">'d'</span>, <span class="string">'h'</span>, <span class="string">'w'</span>, <span class="string">'s'</span>, <span class="string">'e'</span>, <span class="string">'g'</span>, <span class="string">'f'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.update(s2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="string">'h'</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="string">'test'</span>, <span class="string">'e'</span>, <span class="string">'d'</span>, <span class="string">'a'</span>, <span class="string">'r'</span>, <span class="string">'w'</span>, <span class="string">'s'</span>, <span class="string">'g'</span>, <span class="string">'f'</span>, <span class="number">58</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="string">'test'</span>, <span class="number">58</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.pop()</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.remove(<span class="string">'test'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="string">'h'</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="string">'e'</span>, <span class="string">'a'</span>, <span class="string">'w'</span>, <span class="string">'s'</span>, <span class="string">'g'</span>, <span class="number">58</span>, <span class="string">'d'</span>, <span class="string">'r'</span>, <span class="string">'f'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.discard(<span class="string">'r'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="string">'h'</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="string">'e'</span>, <span class="string">'a'</span>, <span class="string">'w'</span>, <span class="string">'s'</span>, <span class="string">'g'</span>, <span class="number">58</span>, <span class="string">'d'</span>, <span class="string">'f'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.clear()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set()</span><br></pre></td></tr></table></figure></li>
 </ul>
 
-            <div class="post-copyright">
+                <div class="post-copyright">
     <div class="content">
         <p>最后更新： 2019年06月16日 16:17</p>
         <p>原始链接：
@@ -347,9 +347,9 @@
     </div>
 </div>
 
-      
-        
-            
+                
+                
+                
 <div class="page-reward">
     <a id="rewardBtn" href="javascript:;">赏</a>
 </div>
@@ -382,11 +382,11 @@
 </div>
 
 
-        
-    </div>
-    <footer class="article-footer">
-        
-        
+                
+            </div>
+            <footer class="article-footer">
+                
+                
 <div class="post-share">
     <a href="javascript:;" id="share-sub" class="post-share-fab">
         <i class="fa fa-share-alt"></i>
@@ -434,10 +434,10 @@
 
 <div class="mask"></div>
 
-        
-        <ul class="article-footer-menu">
-            
-            
+                
+                <ul class="article-footer-menu">
+                    
+                    
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
@@ -445,10 +445,10 @@
       
   </li>
 
-        </ul>
-        
-    </footer>
-  </div>
+                </ul>
+                
+            </footer>
+        </div>
 </article>
 
 
@@ -481,8 +481,8 @@
 
 
 
-    
-        <div id="SOHUCS" sid="Python中的字符串、列表、元组、字典、集合"></div>
+
+<div id="SOHUCS" sid="Python中的字符串、列表、元组、字典、集合"></div>
 <script type="text/javascript">
     (function(){
         var appid = 'cytXViG69';
@@ -490,7 +490,7 @@
         var width = window.innerWidth || document.documentElement.clientWidth;
         if (width < 960) {
             window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
-    
+
 </section>
         
       </div>
