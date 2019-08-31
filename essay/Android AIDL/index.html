@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="sogou_site_verification" content="6EV6mkKQug">
+  
+  <title>IT Go</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="瞎搞事的博客">
+  
+  <meta name="description" content="AIDL简介什么是AIDLAIDL是Android中IPC（Inter-Process Communication）方式中的一种，AIDL是Android Interface definition language的缩写 AIDL有什么作用对于小白来说，AIDL的作用是让你可以在自己的APP里绑定一个其他APP的service，这样你的APP可以和其他APP交互。 什么场景下使用AIDLAIDL更">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android AIDL">
+<meta property="og:url" content="https://blog.it9.top/essay/Android AIDL/index.html">
+<meta property="og:site_name" content="IT Go">
+<meta property="og:description" content="AIDL简介什么是AIDLAIDL是Android中IPC（Inter-Process Communication）方式中的一种，AIDL是Android Interface definition language的缩写 AIDL有什么作用对于小白来说，AIDL的作用是让你可以在自己的APP里绑定一个其他APP的service，这样你的APP可以和其他APP交互。 什么场景下使用AIDLAIDL更">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://blog.it9.top/blog_images/aidl-1.png">
+<meta property="og:image" content="https://blog.it9.top/blog_images/aidl-2.png">
+<meta property="og:image" content="https://blog.it9.top/blog_images/aidl-3.png">
+<meta property="og:updated_time" content="2019-08-31T09:42:01.815Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android AIDL">
+<meta name="twitter:description" content="AIDL简介什么是AIDLAIDL是Android中IPC（Inter-Process Communication）方式中的一种，AIDL是Android Interface definition language的缩写 AIDL有什么作用对于小白来说，AIDL的作用是让你可以在自己的APP里绑定一个其他APP的service，这样你的APP可以和其他APP交互。 什么场景下使用AIDLAIDL更">
+<meta name="twitter:image" content="https://blog.it9.top/blog_images/aidl-1.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+<script>
+ (function() {
+    var src;
+    if (document.location.protocol == "http:") {
+        src = "http://js.passport.qihucdn.com/11.0.1.js?55d431fa6c5ac2f680df02398a4e06a6";
+    } else {
+        src = "https://jspassport.ssl.qhimg.com/11.0.1.js?55d431fa6c5ac2f680df02398a4e06a6";
+    }
+    document.write('<script src="' + src + '" id="sozz"><\/script>');
+    console.log("360push");
+})(); (function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+    console.log("baidupush");
+})();
+</script>
+  
+
+  
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?73ea46c1b5fcdd8bdba5763824704213";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IT Go</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-list"></i>
+                        <span>全部</span>
+                    </a>
+                    
+                    <a href="/categories/essay">
+                        <i class="fa fa-edit"></i>
+                        <span>随笔</span>
+                    </a>
+                    
+                    <a href="/categories/note">
+                        <i class="fa fa-sticky-note"></i>
+                        <span>小知识</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.jpeg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        瞎搞事
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        瞎搞事，瞎折腾，瞎扯淡
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="博客" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="GitHub" target="_blank" href="//github.com/xuqingquan1995">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="tencent://message/?uin=1324569122&Menu=yes&Service=300&sigT=42a1e5347953b64c5ff3980f8a6e644d4b31456cb0b6ac6b27663a3c4dd0f4aa14a543b1716f9d45">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="mailto:xuqingquan1995@gmail.com">
+                            <i class="fa fa-envelope fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Android AIDL" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            
+  
+    <h1 class="post-title" itemprop="name">
+      Android AIDL
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/随笔/">随笔</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-08-31
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+            
+        </header>
+        
+        <div class="article-entry post-content" itemprop="articleBody">
+            
+                
+                <h2 id="AIDL简介"><a href="#AIDL简介" class="headerlink" title="AIDL简介"></a>AIDL简介</h2><h3 id="什么是AIDL"><a href="#什么是AIDL" class="headerlink" title="什么是AIDL"></a>什么是AIDL</h3><p>AIDL是Android中<strong>IPC（Inter-Process Communication）</strong>方式中的一种，AIDL是<strong>Android Interface definition language</strong>的缩写</p>
+<h3 id="AIDL有什么作用"><a href="#AIDL有什么作用" class="headerlink" title="AIDL有什么作用"></a>AIDL有什么作用</h3><p>对于小白来说，AIDL的作用是让你可以在自己的APP里绑定一个其他APP的service，这样你的APP可以和其他APP交互。</p>
+<h3 id="什么场景下使用AIDL"><a href="#什么场景下使用AIDL" class="headerlink" title="什么场景下使用AIDL"></a>什么场景下使用AIDL</h3><p><code>AIDL</code>更加适合在<strong><strong>多个应用程序</strong></strong>之间，<strong><strong>多线程</strong></strong>的情况下进行<strong>进程间通信</strong></p>
+<p><code>Binder</code>更适合在<strong><strong>多个应用程序之间</strong></strong>，<strong><strong>单线程</strong></strong>都情况下进行<strong><strong>进程间通信</strong></strong></p>
+<p><code>Messenger</code>更适合在只有<strong><strong>进程间通信</strong></strong>，<strong><strong>单线程</strong></strong>，<strong><strong>单个应用程序</strong></strong>中使用</p>
+<h2 id="使用AIDL"><a href="#使用AIDL" class="headerlink" title="使用AIDL"></a>使用AIDL</h2><h3 id="新建AIDL文件"><a href="#新建AIDL文件" class="headerlink" title="新建AIDL文件"></a>新建AIDL文件</h3><p>首先，在Android Studio中项目那边有机，New–&gt;Folder–&gt;AIDL Folder<br><img src="/blog_images/aidl-1.png" alt="新建AIDL目录"><br>新建出来都<code>aidl</code>目录跟<code>java</code>是同级的<br><img src="/blog_images/aidl-2.png" alt="AIDL目录"><br>在<code>aidl</code>目录下新建对应都aidl文件<br><img src="/blog_images/aidl-3.png" alt="新建AIDL文件"></p>
+<h3 id="AIDL支持的数据类型"><a href="#AIDL支持的数据类型" class="headerlink" title="AIDL支持的数据类型"></a>AIDL支持的数据类型</h3><p>Android 开发网中有写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">All primitive types in the Java programming language (such as int, long, char, boolean, and so on)</span><br><span class="line">String</span><br><span class="line">CharSequence</span><br><span class="line">List</span><br><span class="line">Map</span><br></pre></td></tr></table></figure></p>
+<p>虽然官方文档指明所有的java基础数据类型都是被支持的，但是实际上<code>short</code>并不支持,如果数据类型中含有<code>short</code>,则编译的时候会报以下错误：<code>ERROR: xxx/IMyAidlInterface.aidl:15.38-43: Failed to resolve &#39;short&#39;</code></p>
+<p>需要注意的是Map不能够写泛型,如果写泛型的话，编译的时候会报以下错误：<code>aidl E 08-31 17:11:09 17172 8244311 type_java.cpp:357] Don&#39;t know how to create a Map&lt;K,V&gt; container.</code></p>
+<p>List虽然可以写泛型，但是泛型只能是上面提到的那些数据类型才行，类似于Integer也是不能被支持的，如果List的泛型是Integer，则编译的时候会报以下错误：<code>ERROR: xxx/IMyAidlInterface.aidl:16.63-70: Failed to resolve &#39;Integer&#39;</code></p>
+<p>对于自定义的实现了Parcelable的数据类型也是可以支持的，但是必须建立一个.aidl文件声明你的parcelable类，例如<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> top.xuqingquan.aidltest;</span><br><span class="line"></span><br><span class="line">parcelable User;</span><br></pre></td></tr></table></figure></p>
+<p>对于所有非基本数据类型要求一个定向的tag来指定数据是去往哪个方向的，且只能是<code>in</code>、<code>out</code>、<code>inout</code></p>
+<p>以下是完整的aidl文件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// IMyAidlInterface.aidl</span></span><br><span class="line"><span class="keyword">package</span> top.xuqingquan.aidltest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> top.xuqingquan.aidltest.User;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMyAidlInterface</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;User&gt; <span class="title">basicTypes</span><span class="params">(<span class="keyword">byte</span> aByte,<span class="comment">/*short aShort,*/</span> <span class="keyword">int</span> anInt, <span class="keyword">long</span> aLong, <span class="keyword">boolean</span> aBoolean, <span class="keyword">float</span> aFloat,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">double</span> aDouble,<span class="keyword">char</span> aChar, String aString,in List&lt;String&gt; aList,in Map aMap,CharSequence aCharSequence,in User user)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="服务端实现"><a href="#服务端实现" class="headerlink" title="服务端实现"></a>服务端实现</h2><p>新建一个Service，<code>onBind</code>方法返回的是一个实现刚才aidl的接口，具体代码如下：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> top.xuqingquan.aidltest</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Service</span><br><span class="line"><span class="keyword">import</span> android.content.Intent</span><br><span class="line"><span class="keyword">import</span> android.os.IBinder</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ITestAidlService</span> : <span class="type">Service</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> users: MutableList&lt;User?&gt;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBind</span><span class="params">(p0: <span class="type">Intent</span>?)</span></span>: IBinder &#123;</span><br><span class="line">        users = arrayListOf()</span><br><span class="line">        <span class="keyword">return</span> iBinder</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> iBinder: IBinder = <span class="keyword">object</span> : IMyAidlInterface.Stub() &#123;</span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">basicTypes</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            aByte: <span class="type">Byte</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            anInt: <span class="type">Int</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            aLong: <span class="type">Long</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            aBoolean: <span class="type">Boolean</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            aFloat: <span class="type">Float</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            aDouble: <span class="type">Double</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            aChar: <span class="type">Char</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            aString: <span class="type">String</span>?,</span></span></span><br><span class="line"><span class="function"><span class="params">            aList: <span class="type">MutableList</span>&lt;<span class="type">String</span>&gt;?,</span></span></span><br><span class="line"><span class="function"><span class="params">            aMap: <span class="type">MutableMap</span>&lt;<span class="type">Any</span>?, Any?&gt;?,</span></span></span><br><span class="line"><span class="function"><span class="params">            aCharSequence: <span class="type">CharSequence</span>?,</span></span></span><br><span class="line"><span class="function"><span class="params">            user: <span class="type">User</span>?</span></span></span><br><span class="line"><span class="function"><span class="params">        )</span></span>: List&lt;User?&gt; &#123;</span><br><span class="line">            users.add(user)</span><br><span class="line">            <span class="keyword">return</span> users</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="客户端的实现"><a href="#客户端的实现" class="headerlink" title="客户端的实现"></a>客户端的实现</h2><p>客户端需要将服务端的整个aidl目录下的内容全部复制一份，对于服务端有的User类，也需要在与服务端相同的包目录下定义剩下的就只需要使用<code>bindService</code>绑定<code>Service</code>，<code>ServiceConnection</code>的<code>onServiceConnected</code>可以拿到远程的aidl，这时候就可以使用它调用相关的方法了<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> top.xuqingquan.aidlclienttest</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.ComponentName</span><br><span class="line"><span class="keyword">import</span> android.content.Context</span><br><span class="line"><span class="keyword">import</span> android.content.Intent</span><br><span class="line"><span class="keyword">import</span> android.content.ServiceConnection</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle</span><br><span class="line"><span class="keyword">import</span> android.os.IBinder</span><br><span class="line"><span class="keyword">import</span> android.os.RemoteException</span><br><span class="line"><span class="keyword">import</span> kotlinx.android.synthetic.main.activity_main.*</span><br><span class="line"><span class="keyword">import</span> top.xuqingquan.aidltest.IMyAidlInterface</span><br><span class="line"><span class="keyword">import</span> top.xuqingquan.aidltest.User</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> iTestAidl: IMyAidlInterface</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line">        <span class="comment">//获取到服务端</span></span><br><span class="line">        <span class="keyword">val</span> intent = Intent()</span><br><span class="line">        <span class="comment">//Android 5.1开始必须显式intent启动service</span></span><br><span class="line">        intent.component =</span><br><span class="line">            ComponentName(<span class="string">"top.xuqingquan.aidltest"</span>, <span class="string">"top.xuqingquan.aidltest.ITestAidlService"</span>)</span><br><span class="line">        bindService(intent, <span class="keyword">object</span> : ServiceConnection &#123;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onServiceDisconnected</span><span class="params">(p0: <span class="type">ComponentName</span>?)</span></span> &#123;</span><br><span class="line">                println(<span class="string">"onServiceDisconnected"</span>)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onServiceConnected</span><span class="params">(p0: <span class="type">ComponentName</span>?, p1: <span class="type">IBinder</span>?)</span></span> &#123;</span><br><span class="line">                println(<span class="string">"onServiceConnected"</span>)</span><br><span class="line">                <span class="comment">//拿到远程到aidl</span></span><br><span class="line">                iTestAidl = IMyAidlInterface.Stub.asInterface(p1)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, Context.BIND_AUTO_CREATE)</span><br><span class="line">        tv_result.setOnClickListener &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">val</span> list = iTestAidl.basicTypes(</span><br><span class="line">                    <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">false</span>, <span class="number">0f</span>, <span class="number">0.0</span>, <span class="string">'a'</span>, <span class="string">""</span>, emptyList(),</span><br><span class="line">                    emptyMap&lt;Any, Any&gt;(), <span class="string">""</span>, User(<span class="string">"test"</span>, <span class="number">11</span>)</span><br><span class="line">                )</span><br><span class="line">                tv_result.text = <span class="string">"<span class="subst">$&#123;list.size&#125;</span>-<span class="variable">$list</span>"</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (e: RemoteException) &#123;</span><br><span class="line">                e.printStackTrace()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后，附上AIDL文档的地址：<a href="https://developer.android.google.cn/guide/components/aidl.html" target="_blank" rel="noopener">https://developer.android.google.cn/guide/components/aidl.html</a></p>
+
+                <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年08月31日 17:42</p>
+        <p>原始链接：
+            
+                <a class="post-url" href="/essay/Android AIDL/" title="Android AIDL">https://blog.it9.top/essay/Android AIDL/</a>
+            
+        </p>
+        <footer>
+            <a href="https://blog.it9.top">
+                <img src="/images/logo.jpeg" alt="IT Go">
+                IT Go
+            </a>
+        </footer>
+    </div>
+</div>
+
+                
+                
+                
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+            <footer class="article-footer">
+                
+                
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.it9.top/essay/Android AIDL/&title=《Android AIDL》 — IT Go&pic=https://blog.it9.top/images/logo.jpeg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.it9.top/essay/Android AIDL/&title=《Android AIDL》 — IT Go&source=瞎搞事，瞎折腾，瞎扯淡" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.it9.top/essay/Android AIDL/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android AIDL》 — IT Go&url=https://blog.it9.top/essay/Android AIDL/&via=https://blog.it9.top" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.it9.top/essay/Android AIDL/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://blog.it9.top/essay/Android AIDL/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+                
+                <ul class="article-footer-menu">
+                    
+                    
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/android/" class="color3">Android</a>
+      
+  </li>
+
+                </ul>
+                
+            </footer>
+        </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AIDL简介"><span class="post-toc-text">AIDL简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是AIDL"><span class="post-toc-text">什么是AIDL</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AIDL有什么作用"><span class="post-toc-text">AIDL有什么作用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么场景下使用AIDL"><span class="post-toc-text">什么场景下使用AIDL</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用AIDL"><span class="post-toc-text">使用AIDL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新建AIDL文件"><span class="post-toc-text">新建AIDL文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AIDL支持的数据类型"><span class="post-toc-text">AIDL支持的数据类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务端实现"><span class="post-toc-text">服务端实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#客户端的实现"><span class="post-toc-text">客户端的实现</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/note/Android 中WebView 视频自动播放/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Android 中WebView 视频自动播放</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div id="SOHUCS" sid="Android AIDL"></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cytXViG69';
+        var conf = 'prod_ec256658191d4702179ffc2efd670f6d';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Copyright &copy; 2019, All Rights Reserved.
+      <br>Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="https://github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+         change by <a href="mailto:xuqingquan1995@gmail.com" target="_blank"> IT Go</a>
+         <br>闽ICP备17032899号-1
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://blog.it9.top",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/note/">小知识</a><a class="category-link" href="/categories/essay/">随笔</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/android/" style="font-size: 20px;">Android</a> <a href="/tags/flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/python/" style="font-size: 10px;">Python</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-list"></i><span>全部</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/categories/essay">
+                    <i class="fa fa-edit"></i><span>随笔</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/categories/note">
+                    <i class="fa fa-sticky-note"></i><span>小知识</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/android/" style="font-size: 20px;">Android</a> <a href="/tags/flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/python/" style="font-size: 10px;">Python</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false}});</script></body>
+</html>
