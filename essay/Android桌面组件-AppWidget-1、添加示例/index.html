@@ -9,17 +9,24 @@
   
     <meta name="keywords" content="瞎搞事的博客">
   
-  <meta name="description" content="瞎搞事，瞎折腾，瞎扯淡">
-<meta name="keywords" content="IT Go">
-<meta property="og:type" content="website">
-<meta property="og:title" content="IT Go">
-<meta property="og:url" content="https://blog.it9.top/categories/essay/index.html">
+  <meta name="description" content="大家对Android系统上对桌面组件应该也不陌生，很多人手机桌面都会有一个时间天气对桌面组件，那么这个组件是怎么实现的呢，一起来探索一下吧  首先，看一下Android Studio上创建的一个demo创建后将会生成AppWidgetExample.java,AppWidgetExampleConfigureActivity.java,app_widget_example.xml,app_wid">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android桌面组件-AppWidget-1、添加示例">
+<meta property="og:url" content="https://blog.it9.top/essay/Android桌面组件-AppWidget-1、添加示例/index.html">
 <meta property="og:site_name" content="IT Go">
-<meta property="og:description" content="瞎搞事，瞎折腾，瞎扯淡">
+<meta property="og:description" content="大家对Android系统上对桌面组件应该也不陌生，很多人手机桌面都会有一个时间天气对桌面组件，那么这个组件是怎么实现的呢，一起来探索一下吧  首先，看一下Android Studio上创建的一个demo创建后将会生成AppWidgetExample.java,AppWidgetExampleConfigureActivity.java,app_widget_example.xml,app_wid">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://blog.it9.top/blog_images/appwidget-1.png">
+<meta property="og:image" content="https://blog.it9.top/blog_images/appwidget-2.png">
+<meta property="og:image" content="https://blog.it9.top/blog_images/appwidget-3.png">
+<meta property="og:image" content="https://blog.it9.top/blog_images/appwidget-4.png">
+<meta property="og:image" content="https://blog.it9.top/blog_images/appwidget-5.png">
+<meta property="og:updated_time" content="2019-09-08T09:39:14.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IT Go">
-<meta name="twitter:description" content="瞎搞事，瞎折腾，瞎扯淡">
+<meta name="twitter:title" content="Android桌面组件-AppWidget-1、添加示例">
+<meta name="twitter:description" content="大家对Android系统上对桌面组件应该也不陌生，很多人手机桌面都会有一个时间天气对桌面组件，那么这个组件是怎么实现的呢，一起来探索一下吧  首先，看一下Android Studio上创建的一个demo创建后将会生成AppWidgetExample.java,AppWidgetExampleConfigureActivity.java,app_widget_example.xml,app_wid">
+<meta name="twitter:image" content="https://blog.it9.top/blog_images/appwidget-1.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -153,36 +160,155 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap">
+        <section id="main" class="body-wrap"><article id="post-Android桌面组件-AppWidget-1、添加示例" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/Android桌面组件-AppWidget-1、添加示例/" class="archive-article-date">
-  <time datetime="2019-09-08T09:20:48.000Z" itemprop="datePublished">09-08</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/Android桌面组件-AppWidget-1、添加示例/">Android桌面组件-AppWidget-1、添加示例</a>
+    <h1 class="post-title" itemprop="name">
+      Android桌面组件-AppWidget-1、添加示例
     </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/随笔/">随笔</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-09-08
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
   
 
-    </header>
-      
-        <div class="archive-post-footer">
             
+        </header>
+        
+        <div class="article-entry post-content" itemprop="articleBody">
+            
+                
+                <blockquote>
+<p>大家对Android系统上对桌面组件应该也不陌生，很多人手机桌面都会有一个时间天气对桌面组件，那么这个组件是怎么实现的呢，一起来探索一下吧</p>
+</blockquote>
+<p>首先，看一下Android Studio上创建的一个demo<br><img src="/blog_images/appwidget-1.png" alt="demo"><br><img src="/blog_images/appwidget-2.png" alt="demo"><br>创建后将会生成<code>AppWidgetExample.java</code>,<code>AppWidgetExampleConfigureActivity.java</code>,<code>app_widget_example.xml</code>,<code>app_widget_example_configure.xml</code>,<code>app_widget_example_info.xml</code>这几个文件<br>运行一下项目，运行完成后在桌面长按，选择Widgets，找到当前App<br><img src="/blog_images/appwidget-3.png" alt="demo"><br>长按拖动组件位置到桌面后松开，由于在创建到时候选择了Configure Screen，所以会先进入配置页面<br><img src="/blog_images/appwidget-4.png" alt="demo"><br>直接点击ADD就添加到桌面了<br><img src="/blog_images/appwidget-5.png" alt="demo"></p>
+
+                <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年09月08日 17:39</p>
+        <p>原始链接：
+            
+                <a class="post-url" href="/essay/Android桌面组件-AppWidget-1、添加示例/" title="Android桌面组件-AppWidget-1、添加示例">https://blog.it9.top/essay/Android桌面组件-AppWidget-1、添加示例/</a>
+            
+        </p>
+        <footer>
+            <a href="https://blog.it9.top">
+                <img src="/images/logo.jpeg" alt="IT Go">
+                IT Go
+            </a>
+        </footer>
+    </div>
+</div>
+
+                
+                
+                
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+            <footer class="article-footer">
+                
+                
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.it9.top/essay/Android桌面组件-AppWidget-1、添加示例/&title=《Android桌面组件-AppWidget-1、添加示例》 — IT Go&pic=https://blog.it9.top/images/logo.jpeg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.it9.top/essay/Android桌面组件-AppWidget-1、添加示例/&title=《Android桌面组件-AppWidget-1、添加示例》 — IT Go&source=瞎搞事，瞎折腾，瞎扯淡" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.it9.top/essay/Android桌面组件-AppWidget-1、添加示例/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android桌面组件-AppWidget-1、添加示例》 — IT Go&url=https://blog.it9.top/essay/Android桌面组件-AppWidget-1、添加示例/&via=https://blog.it9.top" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.it9.top/essay/Android桌面组件-AppWidget-1、添加示例/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://blog.it9.top/essay/Android桌面组件-AppWidget-1、添加示例/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+                
+                <ul class="article-footer-menu">
+                    
+                    
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
@@ -190,121 +316,35 @@
       
   </li>
 
+                </ul>
+                
+            </footer>
         </div>
-      
-  </div>
 </article>
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/Android AIDL/" class="archive-article-date">
-  <time datetime="2019-08-31T08:31:45.000Z" itemprop="datePublished">08-31</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/Android AIDL/">Android AIDL</a>
-    </h1>
-  
 
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/android/" class="color3">Android</a>
-      
-  </li>
 
-        </div>
-      
-  </div>
-</article>
+<nav id="article-nav">
+  
+  
+    <a href="/essay/Android AIDL/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Android AIDL</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/Python中的字符串、列表、元组、字典、集合/" class="archive-article-date">
-  <time datetime="2019-06-16T03:45:11.000Z" itemprop="datePublished">06-16</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/Python中的字符串、列表、元组、字典、集合/">Python中的字符串、列表、元组、字典、集合</a>
-    </h1>
-  
 
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/python/" class="color2">Python</a>
-      
-  </li>
 
-        </div>
-      
-  </div>
-</article>
 
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/初识Flutter/" class="archive-article-date">
-  <time datetime="2018-12-16T12:15:08.000Z" itemprop="datePublished">12-16</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/初识Flutter/">初识Flutter</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/flutter/" class="color3">Flutter</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-  
-    </div></section>
-  
+<div id="SOHUCS" sid="Android桌面组件-AppWidget-1、添加示例"></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cytXViG69';
+        var conf = 'prod_ec256658191d4702179ffc2efd670f6d';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
 
 </section>
         

@@ -1,3 +1,4 @@
+https://blog.it9.top/essay/Android桌面组件-AppWidget-1、添加示例/
 https://blog.it9.top/essay/Android AIDL/
 https://blog.it9.top/note/Android 中WebView 视频自动播放/
 https://blog.it9.top/essay/Python中的字符串、列表、元组、字典、集合/
