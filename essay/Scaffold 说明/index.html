@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="sogou_site_verification" content="6EV6mkKQug">
+  
+  <title>IT Go</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="瞎搞事的博客">
+  
+  <meta name="description" content="依赖Scaffoldjitpack方式：123456在项目目录下的build.gradle中的allprojects下的repositories里面添加maven &amp;#123;     url &amp;quot;https://jitpack.io&amp;quot;&amp;#125;然后再项目module下的build.gradle中dependencies里添加implementation com.github.">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scaffold 使用说明">
+<meta property="og:url" content="https://blog.it9.top/essay/Scaffold 说明/index.html">
+<meta property="og:site_name" content="IT Go">
+<meta property="og:description" content="依赖Scaffoldjitpack方式：123456在项目目录下的build.gradle中的allprojects下的repositories里面添加maven &amp;#123;     url &amp;quot;https://jitpack.io&amp;quot;&amp;#125;然后再项目module下的build.gradle中dependencies里添加implementation com.github.">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-28T09:10:11.425Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scaffold 使用说明">
+<meta name="twitter:description" content="依赖Scaffoldjitpack方式：123456在项目目录下的build.gradle中的allprojects下的repositories里面添加maven &amp;#123;     url &amp;quot;https://jitpack.io&amp;quot;&amp;#125;然后再项目module下的build.gradle中dependencies里添加implementation com.github.">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+<script>
+ (function() {
+    var src;
+    if (document.location.protocol == "http:") {
+        src = "http://js.passport.qihucdn.com/11.0.1.js?55d431fa6c5ac2f680df02398a4e06a6";
+    } else {
+        src = "https://jspassport.ssl.qhimg.com/11.0.1.js?55d431fa6c5ac2f680df02398a4e06a6";
+    }
+    document.write('<script src="' + src + '" id="sozz"><\/script>');
+    console.log("360push");
+})(); (function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+    console.log("baidupush");
+})();
+</script>
+  
+
+  
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?73ea46c1b5fcdd8bdba5763824704213";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IT Go</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-list"></i>
+                        <span>全部</span>
+                    </a>
+                    
+                    <a href="/categories/essay">
+                        <i class="fa fa-edit"></i>
+                        <span>随笔</span>
+                    </a>
+                    
+                    <a href="/categories/note">
+                        <i class="fa fa-sticky-note"></i>
+                        <span>小知识</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.jpeg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        瞎搞事
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        瞎搞事，瞎折腾，瞎扯淡
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="博客" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="GitHub" target="_blank" href="//github.com/xuqingquan1995">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="tencent://message/?uin=1324569122&Menu=yes&Service=300&sigT=42a1e5347953b64c5ff3980f8a6e644d4b31456cb0b6ac6b27663a3c4dd0f4aa14a543b1716f9d45">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="mailto:xuqingquan1995@gmail.com">
+                            <i class="fa fa-envelope fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Scaffold 说明" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            
+  
+    <h1 class="post-title" itemprop="name">
+      Scaffold 使用说明
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/随笔/">随笔</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-09-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+            
+        </header>
+        
+        <div class="article-entry post-content" itemprop="articleBody">
+            
+                
+                <h2 id="依赖Scaffold"><a href="#依赖Scaffold" class="headerlink" title="依赖Scaffold"></a>依赖Scaffold</h2><h3 id="jitpack方式："><a href="#jitpack方式：" class="headerlink" title="jitpack方式："></a>jitpack方式：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在项目目录下的build.gradle中的allprojects下的repositories里面添加</span><br><span class="line">maven &#123;</span><br><span class="line">     url &quot;https://jitpack.io&quot;</span><br><span class="line">&#125;</span><br><span class="line">然后再项目module下的build.gradle中dependencies里添加</span><br><span class="line">implementation com.github.xuqingquan1995:Scaffold:1.0.5&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="作为module引用"><a href="#作为module引用" class="headerlink" title="作为module引用"></a>作为module引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. git clone https://github.com/xuqingquan1995/Scaffold.git</span><br><span class="line">2. 在自己项目中选择File-&gt;New-&gt;Import Module 选择clone下来的工程中的scaffold模块</span><br><span class="line">3. 复制clone下来的Scaffold目录下的version.gradle到自己的项目中</span><br><span class="line">4. 在工程目录下的build.gradle最上面添加 apply from: &apos;version.gradle&apos;</span><br><span class="line">5. 在自己工程模块中的build.gradle中dependencies里添加  implementation project(path: &apos;:scaffold&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="作为gitsubmodule使用"><a href="#作为gitsubmodule使用" class="headerlink" title="作为gitsubmodule使用"></a>作为gitsubmodule使用</h3><p>将Scaffold作为子模块添加到自己项目中，方法大致与作为module引用相似</p>
+<h2 id="使用Scaffold"><a href="#使用Scaffold" class="headerlink" title="使用Scaffold"></a>使用Scaffold</h2><h3 id="初始化相关配置，包括网络状态，生命周期等"><a href="#初始化相关配置，包括网络状态，生命周期等" class="headerlink" title="初始化相关配置，包括网络状态，生命周期等"></a>初始化相关配置，包括网络状态，生命周期等</h3><p>新建一个App，继承于Application<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> : <span class="type">Application</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//已经通过ContentProvider方式初始化，这边的初始化可以不用了</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> mAppDelegate: AppLifecycles</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">attachBaseContext</span><span class="params">(base: <span class="type">Context</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.attachBaseContext(base)</span><br><span class="line">        mAppDelegate = AppDelegate.getInstance(base!!)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate()</span><br><span class="line">        <span class="comment">//生命周期初始化</span></span><br><span class="line">        mAppDelegate.onCreate(<span class="keyword">this</span>)</span><br><span class="line">        <span class="comment">//配置初始化</span></span><br><span class="line">        ScaffoldConfig.getInstance(<span class="keyword">this</span>)</span><br><span class="line">            .setBaseUrl(<span class="string">"https://api.douban.com"</span>)</span><br><span class="line">            .setLevel(Level.NONE)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onTerminate</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onTerminate()</span><br><span class="line">        mAppDelegate.onTerminate(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Activity的使用"><a href="#Activity的使用" class="headerlink" title="Activity的使用"></a>Activity的使用</h3><p>新建一个<code>Activity</code>继承于<code>SimpleActivity</code>,实现<code>SimpleActivity</code>里面的抽象方法<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">SimpleActivity</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getLayoutId</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> R.layout.activity_main</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">initData</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Fragment的使用"><a href="#Fragment的使用" class="headerlink" title="Fragment的使用"></a>Fragment的使用</h3><p>新建一个<code>Fragment</code>继承于<code>SimpleFragment</code>,实现里面的抽象方法<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainFragment</span> : <span class="type">SimpleFragment</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getLayoutId</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> R.layout.fragment_main</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">initView</span><span class="params">(view: <span class="type">View</span>)</span></span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">initData</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="RecyclerView-Adapter的使用"><a href="#RecyclerView-Adapter的使用" class="headerlink" title="RecyclerView Adapter的使用"></a>RecyclerView Adapter的使用</h3><p>Scaffold有封装了RecyclerView的Adapter，包括最简单的<code>SimpleRecyclerAdapter</code>,<code>SimplePagedListAdapter</code>,<code>SimpleListAdapter</code>以及添加了默认的网络状态处理的<code>BasePagedListAdapter</code>,<code>BaseListAdapter</code></p>
+<blockquote>
+<p><code>SimpleRecyclerAdapter</code>可以持有数据源，适合需要对数据进行修改的时候使用，其余均不持有数据源</p>
+</blockquote>
+<blockquote>
+<p><code>SimplePagedListAdapter</code>,<code>BasePagedListAdapter</code>适合在使用Paging加载数据的时候使用</p>
+</blockquote>
+<blockquote>
+<p><code>SimpleListAdapter</code>,<code>BaseListAdapter</code>适合在不需要对数据进行修改的情况下使用，因为没有办法获取到数据源</p>
+</blockquote>
+<p>以上Adapter为方便扩展，都不是使用抽象类，所以可以按需覆写父类里面的函数，正常情况下都需要覆写<code>getLayoutRes</code>和<code>setData</code>方法<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> viewType 不同的视图类型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 返回布局id</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getLayoutRes</span><span class="params">(viewType: <span class="type">Int</span>)</span></span> = R.layout.item</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> holder 默认的ViewHolder，可以通过holder.getView&lt;TextView&gt;(R.id.text)获取item中的控件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> data 当前item的数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> position 当前item的position</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">setData</span><span class="params">(holder: <span class="type">BaseViewHolder</span>&lt;<span class="type">Subjects</span>&gt;, <span class="keyword">data</span>: <span class="type">Subjects</span>?, position: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上Adapter都需要传入一个泛型，作为每个item的类型，对于有多个数据类型的情况下，可以直接传入一个Any，然后根据itemViewType和数据类型判断</p>
+<p>如果Adapter中需要处理点击事件，可以按照需要覆写<code>onClick</code>或<code>onLongClick</code>，如果adapter需要更<code>Activity</code>或者<code>Fragment</code>中的控件交互，也可以在<code>Activity</code>或<code>Fragment</code>里面设置Listener<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">adapter.listener = <span class="keyword">object</span> : SimplePagedListAdapter.OnViewClickListener&lt;Subjects&gt;() &#123;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onClick</span><span class="params">(view: <span class="type">View</span>, position: <span class="type">Int</span>, <span class="keyword">data</span>: <span class="type">Subjects</span>?, viewType: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="协程的调用"><a href="#协程的调用" class="headerlink" title="协程的调用"></a>协程的调用</h3><p>在<code>Activity</code>和<code>Fragment</code>里面均有封装了<code>launch</code>函数，可以方便的使用协程，以下是一个网络请求的示例<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">launch &#123; </span><br><span class="line">            <span class="keyword">val</span> top250 = ScaffoldConfig.getRepositoryManager()</span><br><span class="line">                .obtainRetrofitService(DoubanService::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">                .top250(<span class="string">"xxx"</span>, <span class="number">1</span>, <span class="number">20</span>)</span><br><span class="line">            toast(top250.toString())</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>由于使用协程，并且很好的处理了各种相关生命周期相关问题以及线程间切换的问题，可以不再需要进行麻烦的协程切换操作，从上面可以看到，同一个代码块中，即处理了网络请求，还使用了toast</p>
+</blockquote>
+<h3 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h3><blockquote>
+<p>Github: <a href="https://github.com/xuqingquan1995/Scaffold.git" target="_blank" rel="noopener">https://github.com/xuqingquan1995/Scaffold.git</a></p>
+</blockquote>
+<blockquote>
+<p>Gitee: <a href="https://gitee.com/xuqingquan/Scaffold.git" target="_blank" rel="noopener">https://gitee.com/xuqingquan/Scaffold.git</a></p>
+</blockquote>
+<p>欢迎Star</p>
+
+                <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年09月28日 17:10</p>
+        <p>原始链接：
+            
+                <a class="post-url" href="/essay/Scaffold 说明/" title="Scaffold 使用说明">https://blog.it9.top/essay/Scaffold 说明/</a>
+            
+        </p>
+        <footer>
+            <a href="https://blog.it9.top">
+                <img src="/images/logo.jpeg" alt="IT Go">
+                IT Go
+            </a>
+        </footer>
+    </div>
+</div>
+
+                
+                
+                
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+            <footer class="article-footer">
+                
+                
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.it9.top/essay/Scaffold 说明/&title=《Scaffold 使用说明》 — IT Go&pic=https://blog.it9.top/images/logo.jpeg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.it9.top/essay/Scaffold 说明/&title=《Scaffold 使用说明》 — IT Go&source=瞎搞事，瞎折腾，瞎扯淡" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.it9.top/essay/Scaffold 说明/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Scaffold 使用说明》 — IT Go&url=https://blog.it9.top/essay/Scaffold 说明/&via=https://blog.it9.top" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.it9.top/essay/Scaffold 说明/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://blog.it9.top/essay/Scaffold 说明/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+                
+                <ul class="article-footer-menu">
+                    
+                    
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/android/" class="color3">Android</a>
+      
+  </li>
+
+                </ul>
+                
+            </footer>
+        </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#依赖Scaffold"><span class="post-toc-text">依赖Scaffold</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#jitpack方式："><span class="post-toc-text">jitpack方式：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作为module引用"><span class="post-toc-text">作为module引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作为gitsubmodule使用"><span class="post-toc-text">作为gitsubmodule使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用Scaffold"><span class="post-toc-text">使用Scaffold</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化相关配置，包括网络状态，生命周期等"><span class="post-toc-text">初始化相关配置，包括网络状态，生命周期等</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity的使用"><span class="post-toc-text">Activity的使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Fragment的使用"><span class="post-toc-text">Fragment的使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RecyclerView-Adapter的使用"><span class="post-toc-text">RecyclerView Adapter的使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#协程的调用"><span class="post-toc-text">协程的调用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目地址"><span class="post-toc-text">项目地址</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/essay/Android桌面组件-AppWidget-1、添加示例/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Android桌面组件-AppWidget-1、添加示例</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div id="SOHUCS" sid="Scaffold 说明"></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cytXViG69';
+        var conf = 'prod_ec256658191d4702179ffc2efd670f6d';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Copyright &copy; 2019, All Rights Reserved.
+      <br>Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="https://github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+         change by <a href="mailto:xuqingquan1995@gmail.com" target="_blank"> IT Go</a>
+         <br>闽ICP备17032899号-1
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://blog.it9.top",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/note/">小知识</a><a class="category-link" href="/categories/essay/">随笔</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/android/" style="font-size: 20px;">Android</a> <a href="/tags/flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/python/" style="font-size: 10px;">Python</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-list"></i><span>全部</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/categories/essay">
+                    <i class="fa fa-edit"></i><span>随笔</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/categories/note">
+                    <i class="fa fa-sticky-note"></i><span>小知识</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/android/" style="font-size: 20px;">Android</a> <a href="/tags/flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/python/" style="font-size: 10px;">Python</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false}});</script></body>
+</html>
