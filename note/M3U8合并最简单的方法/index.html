@@ -9,17 +9,18 @@
   
     <meta name="keywords" content="瞎搞事的博客">
   
-  <meta name="description" content="瞎搞事，瞎折腾，瞎扯淡">
-<meta name="keywords" content="IT Go">
-<meta property="og:type" content="website">
-<meta property="og:title" content="IT Go">
-<meta property="og:url" content="https://blog.it9.top/archives/index.html">
+  <meta name="description" content="近期有涉及到M3M8合并的需求，但是网上并没有找到比较简单的办法，甚至一些合并的软件大小都要10+M，或者是使用ffmpeg去操作，这些都是太过麻烦了，这里有一个简单的办法，可以使用Linux自带的系统命令cat实现，cat合并文件命令为：1cat file1 file2 &amp;gt; file 同时Android也有这个cat命令，只需要执行shell命令，然后使用cat命令就可以将多个m3u8片段">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="M3U8合并最简单的方法">
+<meta property="og:url" content="https://blog.it9.top/note/M3U8合并最简单的方法/index.html">
 <meta property="og:site_name" content="IT Go">
-<meta property="og:description" content="瞎搞事，瞎折腾，瞎扯淡">
+<meta property="og:description" content="近期有涉及到M3M8合并的需求，但是网上并没有找到比较简单的办法，甚至一些合并的软件大小都要10+M，或者是使用ffmpeg去操作，这些都是太过麻烦了，这里有一个简单的办法，可以使用Linux自带的系统命令cat实现，cat合并文件命令为：1cat file1 file2 &amp;gt; file 同时Android也有这个cat命令，只需要执行shell命令，然后使用cat命令就可以将多个m3u8片段">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-17T08:06:09.350Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IT Go">
-<meta name="twitter:description" content="瞎搞事，瞎折腾，瞎扯淡">
+<meta name="twitter:title" content="M3U8合并最简单的方法">
+<meta name="twitter:description" content="近期有涉及到M3M8合并的需求，但是网上并没有找到比较简单的办法，甚至一些合并的软件大小都要10+M，或者是使用ffmpeg去操作，这些都是太过麻烦了，这里有一个简单的办法，可以使用Linux自带的系统命令cat实现，cat合并文件命令为：1cat file1 file2 &amp;gt; file 同时Android也有这个cat命令，只需要执行shell命令，然后使用cat命令就可以将多个m3u8片段">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -153,36 +154,153 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap">
+        <section id="main" class="body-wrap"><article id="post-M3U8合并最简单的方法" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/M3U8合并最简单的方法/" class="archive-article-date">
-  <time datetime="2019-11-17T08:00:00.000Z" itemprop="datePublished">11-17</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/M3U8合并最简单的方法/">M3U8合并最简单的方法</a>
+    <h1 class="post-title" itemprop="name">
+      M3U8合并最简单的方法
     </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/小知识/">小知识</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-17
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
   
 
-    </header>
-      
-        <div class="archive-post-footer">
             
+        </header>
+        
+        <div class="article-entry post-content" itemprop="articleBody">
+            
+                
+                <p>近期有涉及到M3M8合并的需求，但是网上并没有找到比较简单的办法，甚至一些合并的软件大小都要10+M，或者是使用ffmpeg去操作，这些都是太过麻烦了，这里有一个简单的办法，可以使用Linux自带的系统命令cat实现，<code>cat</code>合并文件命令为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat file1 file2 &gt; file</span><br></pre></td></tr></table></figure></p>
+<p>同时Android也有这个<code>cat</code>命令，只需要执行shell命令，然后使用cat命令就可以将多个m3u8片段合并为一个mp4文件了，效率的话，使用红米Note4手机测试，大概是100和ts文件1秒左右，相对还是比较快的</p>
+
+                <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月17日 16:06</p>
+        <p>原始链接：
+            
+                <a class="post-url" href="/note/M3U8合并最简单的方法/" title="M3U8合并最简单的方法">https://blog.it9.top/note/M3U8合并最简单的方法/</a>
+            
+        </p>
+        <footer>
+            <a href="https://blog.it9.top">
+                <img src="/images/logo.jpeg" alt="IT Go">
+                IT Go
+            </a>
+        </footer>
+    </div>
+</div>
+
+                
+                
+                
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+            <footer class="article-footer">
+                
+                
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.it9.top/note/M3U8合并最简单的方法/&title=《M3U8合并最简单的方法》 — IT Go&pic=https://blog.it9.top/images/logo.jpeg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.it9.top/note/M3U8合并最简单的方法/&title=《M3U8合并最简单的方法》 — IT Go&source=瞎搞事，瞎折腾，瞎扯淡" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.it9.top/note/M3U8合并最简单的方法/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《M3U8合并最简单的方法》 — IT Go&url=https://blog.it9.top/note/M3U8合并最简单的方法/&via=https://blog.it9.top" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.it9.top/note/M3U8合并最简单的方法/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://blog.it9.top/note/M3U8合并最简单的方法/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+                
+                <ul class="article-footer-menu">
+                    
+                    
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
@@ -190,281 +308,35 @@
       
   </li>
 
+                </ul>
+                
+            </footer>
         </div>
-      
-  </div>
 </article>
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/M3U8视频下载实现/" class="archive-article-date">
-  <time datetime="2019-10-25T08:44:00.000Z" itemprop="datePublished">10-25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/M3U8视频下载实现/">M3U8视频下载实现</a>
-    </h1>
-  
 
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/android/" class="color3">Android</a>
-      
-  </li>
 
-        </div>
-      
-  </div>
-</article>
+<nav id="article-nav">
+  
+  
+    <a href="/essay/M3U8视频下载实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">M3U8视频下载实现</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/GSYVideoPlayer 视频缓存部分源码解析/" class="archive-article-date">
-  <time datetime="2019-10-11T10:48:34.000Z" itemprop="datePublished">10-11</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/GSYVideoPlayer 视频缓存部分源码解析/">GSYVideoPlayer 视频缓存简单源码解析</a>
-    </h1>
-  
 
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/android/" class="color3">Android</a>
-      
-  </li>
 
-        </div>
-      
-  </div>
-</article>
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/Scaffold 说明/" class="archive-article-date">
-  <time datetime="2019-09-28T02:20:13.000Z" itemprop="datePublished">09-28</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/Scaffold 说明/">Scaffold 使用说明</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/android/" class="color3">Android</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/Android桌面组件-AppWidget-1、添加示例/" class="archive-article-date">
-  <time datetime="2019-09-08T09:20:48.000Z" itemprop="datePublished">09-08</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/Android桌面组件-AppWidget-1、添加示例/">Android桌面组件-AppWidget-1、添加示例</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/android/" class="color3">Android</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/Android AIDL/" class="archive-article-date">
-  <time datetime="2019-08-31T08:31:45.000Z" itemprop="datePublished">08-31</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/Android AIDL/">Android AIDL</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/android/" class="color3">Android</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/Android 中WebView 视频自动播放/" class="archive-article-date">
-  <time datetime="2019-08-19T15:45:39.000Z" itemprop="datePublished">08-19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/Android 中WebView 视频自动播放/">Android 中WebView 视频自动播放</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/android/" class="color3">Android</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/Python中的字符串、列表、元组、字典、集合/" class="archive-article-date">
-  <time datetime="2019-06-16T03:45:11.000Z" itemprop="datePublished">06-16</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/Python中的字符串、列表、元组、字典、集合/">Python中的字符串、列表、元组、字典、集合</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/python/" class="color2">Python</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/essay/初识Flutter/" class="archive-article-date">
-  <time datetime="2018-12-16T12:15:08.000Z" itemprop="datePublished">12-16</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/essay/初识Flutter/">初识Flutter</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/flutter/" class="color3">Flutter</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-  
-    </div></section>
-  
+<div id="SOHUCS" sid="M3U8合并最简单的方法"></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cytXViG69';
+        var conf = 'prod_ec256658191d4702179ffc2efd670f6d';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
 
 </section>
         
