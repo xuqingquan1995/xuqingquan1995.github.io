@@ -1,3 +1,4 @@
+https://blog.it9.top/essay/AndroidManifest.xml 里面各个属性的解析/
 https://blog.it9.top/essay/Android 本地打包签名方案尝试/
 https://blog.it9.top/note/M3U8合并最简单的方法/
 https://blog.it9.top/essay/M3U8视频下载实现/

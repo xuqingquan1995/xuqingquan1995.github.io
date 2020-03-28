@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="sogou_site_verification" content="6EV6mkKQug">
+  
+  <title>IT Go</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="瞎搞事的博客">
+  
+  <meta name="description" content="每个Android项目都包含清单文件AndroidManifest.xml，在Android Studio 中，可以在app/manifest中访问到应用的配置清单。 配置清单文件定义了应用的结构、元数据、组件及需求。 配置清单包含构成应用的每个Acitivty、Service、Content Provider和Broadcast Receiver的节点，并使用Intent Filter和Perm">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndroidManifest.xml 里面各个属性的解析">
+<meta property="og:url" content="https://blog.it9.top/essay/AndroidManifest.xml 里面各个属性的解析/index.html">
+<meta property="og:site_name" content="IT Go">
+<meta property="og:description" content="每个Android项目都包含清单文件AndroidManifest.xml，在Android Studio 中，可以在app/manifest中访问到应用的配置清单。 配置清单文件定义了应用的结构、元数据、组件及需求。 配置清单包含构成应用的每个Acitivty、Service、Content Provider和Broadcast Receiver的节点，并使用Intent Filter和Perm">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-03-28T15:03:27.379Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AndroidManifest.xml 里面各个属性的解析">
+<meta name="twitter:description" content="每个Android项目都包含清单文件AndroidManifest.xml，在Android Studio 中，可以在app/manifest中访问到应用的配置清单。 配置清单文件定义了应用的结构、元数据、组件及需求。 配置清单包含构成应用的每个Acitivty、Service、Content Provider和Broadcast Receiver的节点，并使用Intent Filter和Perm">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+<script>
+ (function() {
+    var src;
+    if (document.location.protocol == "http:") {
+        src = "http://js.passport.qihucdn.com/11.0.1.js?55d431fa6c5ac2f680df02398a4e06a6";
+    } else {
+        src = "https://jspassport.ssl.qhimg.com/11.0.1.js?55d431fa6c5ac2f680df02398a4e06a6";
+    }
+    document.write('<script src="' + src + '" id="sozz"><\/script>');
+    console.log("360push");
+})(); (function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+    console.log("baidupush");
+})();
+</script>
+  
+
+  
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?73ea46c1b5fcdd8bdba5763824704213";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IT Go</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-list"></i>
+                        <span>全部</span>
+                    </a>
+                    
+                    <a href="/categories/essay">
+                        <i class="fa fa-edit"></i>
+                        <span>随笔</span>
+                    </a>
+                    
+                    <a href="/categories/note">
+                        <i class="fa fa-sticky-note"></i>
+                        <span>小知识</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.jpeg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        瞎搞事
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        瞎搞事，瞎折腾，瞎扯淡
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="博客" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="GitHub" target="_blank" href="//github.com/xuqingquan1995">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="tencent://message/?uin=1324569122&Menu=yes&Service=300&sigT=42a1e5347953b64c5ff3980f8a6e644d4b31456cb0b6ac6b27663a3c4dd0f4aa14a543b1716f9d45">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="mailto:xuqingquan1995@gmail.com">
+                            <i class="fa fa-envelope fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-AndroidManifest.xml 里面各个属性的解析" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            
+  
+    <h1 class="post-title" itemprop="name">
+      AndroidManifest.xml 里面各个属性的解析
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/随笔/">随笔</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2020-03-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+            
+        </header>
+        
+        <div class="article-entry post-content" itemprop="articleBody">
+            
+                
+                <p>每个Android项目都包含清单文件AndroidManifest.xml，在Android Studio 中，可以在app/manifest中访问到应用的配置清单。</p>
+<p>配置清单文件定义了应用的结构、元数据、组件及需求。</p>
+<p>配置清单包含构成应用的每个<code>Acitivty</code>、<code>Service</code>、<code>Content Provider</code>和<code>Broadcast Receiver</code>的节点，并使用<code>Intent Filter</code>和<code>Permission</code>来确定他们之间以及其他应用之间的交互方式。</p>
+<p>配置清单文件由<code>manifest</code>根节点标签标记组成，其中的package属性用于设置项目的唯一包名，另外还应该包含<code>xmlns:android</code>属性，以提供文件中所需的更多系统属性。</p>
+<p>下面的xml代码展示了一种典型的配置清单根节点：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">package</span>=<span class="string">"top.xuqingquan.sample"</span>&gt;</span></span><br><span class="line">......</span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>配置清单在application顶级节点中制定了应用的元数据（如图标和主题）。其他顶级节点可以制定任何所需的权限，单元测试，并定义硬件、屏幕或平台需求。</p>
+<p>下面列表总结了一些可用的配置清单子节点标签，另外还提供了XML代码片段，以演示如何使用每一个标签：</p>
+<ul>
+<li><ol>
+<li>uses-feature ——Android 可以在各种硬件平台上使用，可以使用use-feature节点来指定应用正常运行所需的硬件和软件特性。</li>
+</ol>
+</li>
+</ul>
+<p>请注意，这将阻止把应用安装在不包含指定功能的设备上，例如以下代码片段中的NFC硬件：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-feature</span> <span class="attr">android:name</span>=<span class="string">"android.hardware.nfc"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>仅当希望防止把应用安装到不包含某些功能特性的设备上时才使用此节点。目前，所支持的必须功能包括以下类别：</p>
+<pre><code>· Audio —— 适用于低延迟或专业级音频通道，或者麦克风输入的应用。
+· Bluetooth —— 适用于需要蓝牙或者BTLE收音机的地方。
+· Camera —— 适用于需要相机的地方。还可以要求（或设置为可选）前置或后、自动对焦、手动后处理、手动传感器、闪光灯或RAW支持。
+· Device Hardware UI —— 应用是为特定设备的用户界面设置的，例如汽车或者手表。
+· Fingerpring —— 需要能够读取指纹的生物识别硬件。
+· Gamepad —— 适用于需要游戏控制器输入的游戏（或应用），无论来自设备自身还是外界的游戏手柄。
+· Infrared —— 指明对红外（IR）功能对需求（通常用于与其他用户对红外设备进行通信）。
+· Location —— 指明需要基于定位的服务，还可以显示的指定网络或GPS作为支持。
+· NFC —— 需要NFC（近场通信）支持。
+· OpenGL ES —— 应用需要设备安装上了OpenGL ES 的Android扩展包。
+· Sensor —— 可以指定对任何可能可用对硬件传感器的要求，包括加速度计、气压表、罗盘、陀螺仪、传感器，以检测环境温度、心率、光线、接近度、湿度，以及执行步行计数和步行检测等。
+· Telephony —— 需要指定普通电话或特定电话无线电（GSM或CDMA）。
+· Touchscreen —— 指定应用需要需要的触摸屏类型，包括可以检测和跟踪多种不同的触摸输入。
+· USB —— 适用于需要USB主机或者附件模式支持的应用。
+· Wi-Fi —— 需要Wi-Fi对网络进行支持。
+· 通信软件 —— 应用需要对（SIP）会话初始化协议或（VoIP Internet）协议语音服务提供技术。
+· 设备管理软件 —— 使用这些可选的软件功能指定应用需要支持设备管理功能，包括备份服务，设备策略执行、托管用户、用户迁移和启动验证。
+· 媒体软件 —— 表明应用对MIDI支持、打印、“后倾”（电视）UI、电视直播或主屏幕小部件有需要。
+</code></pre><p>随着Android平台的种类日益增多，可选的硬件和软件也会越来越多，可以在<a href="https://developer.android.google.cn/guide/topics/manifest/uses-feature-element" target="_blank" rel="noopener">https://developer.android.google.cn/guide/topics/manifest/uses-feature-element</a>上找到完整的uses-feature硬件列表。</p>
+<p>为了保障兼容性，指定某些权限的要求也意味着功能要求。具体来说，在请求访问蓝牙、相机权限、任向位置服务权限、音频录制、Wi-Fi和电话相关权限的许可时，意味着需要相应的硬件功能。可以通过添加required属性并设置为false 来重写这些隐含的要求，例如，支持但不需要)录制音频笔记的记录应用可以选择使用克风硬件选项:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-feature</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">"android.hardware.microphone"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:required</span>=<span class="string">"false"</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>相机硬件也代表了-种特殊的情况。出于兼容性的考虑，请求使用相机的权限，或者添加一个需要它的 !uses-feature节点，意味着要求相机支持自动对焦。可以根据需要将其指定为可选的:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-feature</span> <span class="attr">android:name</span>=<span class="string">"android.hardware.camera"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-feature</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">"android.hardware.camera.autofocus"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:required</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-feature</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">"android.hardware.camera.flash"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:required</span>=<span class="string">"false"</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>supports-screens —— 随着数百种大小、分辨率和密度不同的屏幕的增加，以及多窗口模式的引入，应该为应用创建响应式UI设计，从而为所有的用户提供良好的体验。虽然在技术上可以使用supports-screens节点将应用的可用性限制为仅受支持的屏幕分辨率的子集，但这被认为是不好的做法，所以应该尽量避免。</li>
+<li>supports-gl-texture —— 声明应用能够提供使用特定GL纹理压缩格式压缩的纹理资源。如果应用能够支持多种纹理压缩格式，则必须使用多个supports-gl-texture节点元素。可以在<a href="https://developer.android.google.cn/guide/topics/manifest/supports-gl-texture-element" target="_blank" rel="noopener">https://developer.android.google.cn/guide/topics/manifest/supports-gl-texture-element</a>上了解到支持的GL纹理压缩格式值的最新列表。</li>
+<li>uses-permission —— 作为安全模块的一部分，uses-permission标签声明应用所需要的用户权限。指定的每个权限将在应用安装之前(运行在Android 5.1或更低版本的设备上)或在应用运行时(运行在Android 6.0或更高版本的设备上)呈现给用户。许多API和方法调用都需要权限，通常是那些具有相关成本或安全隐患的API和方法调用(例如拨号、接收SMS或使用基于位置的服务)。我们会根据需要在本书其余部分介绍这些内容。</li>
+<li>permission —— 共享的应用组件也可以创建权限，以限制来自其他应用组件的访问。可以使用现有平台权限来实现此目的，也可以在配置清单中定义自己的权限。为此，请使用permission标签创建权限定义。可以指定权限允许的访问级别(正常(normal)、危险(dangerous)、签名(signature)、签名或系统(signatureOrSystem)、标签和外部资源，其中包含解释授予指定权限的风险说明。</li>
+<li><p>application —— 配置清单中只能包含一个application 节点。它通过属性来指定应用的元数据(metadata),包括名称(name)、图标(icon)和主题(theme)。还可以指定是否允许使用自动备份数据(Android Auto Backup)，以及是否支持从右到左的UI布局。如果正在使用自定义的Application类，那么必须使用android:name属性在此处指定它。application节点还可以充当指定的应用组件——Activity、Service、Content Provider和BroadcastReceiver节点的容器。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:allowBackup</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:roundIcon</span>=<span class="string">"@mipmap/ic_launcher_round"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>activiy —— 应用中的每个 Activity都需要一个 activity 标签，并使用android:name属性来指示Activity的类名。必须包含主启动Activity以及可能会显示的其他任何Activiy.如果尝试启动未包含在配置清单中的Activity,则会触发运行时异常。每一个activity节点都支持intent-filter子标签，用于定义可用于启动Activity的Intent.<br>注意，在指定Activity的类名时，前面的句点(英文句点)是应用的包名的缩写:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>service —— 与activity标签一样，为应用中使用的每个Service类添加一个service标签。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">service</span> <span class="attr">android:name</span>=<span class="string">"MyService"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>provider —— provider 标签指定应用中的每个Content Provider,Content Provider 用于管理数据库的访问和共享。</p>
+</li>
+<li>receiver —— 通过添加receiver标签，不需要先启动应用就能注册一个Broadcast Receiver。Broadcast Receiver就像全局事件监听器。注册之后,每当系统广播匹配了对应的Intent时，它就会执行。通过在配置清单中注册Broadcast Receiver,就可以使此过程完全自治。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".MyReceiver"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+                <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2020年03月28日 23:03</p>
+        <p>原始链接：
+            
+                <a class="post-url" href="/essay/AndroidManifest.xml 里面各个属性的解析/" title="AndroidManifest.xml 里面各个属性的解析">https://blog.it9.top/essay/AndroidManifest.xml 里面各个属性的解析/</a>
+            
+        </p>
+        <footer>
+            <a href="https://blog.it9.top">
+                <img src="/images/logo.jpeg" alt="IT Go">
+                IT Go
+            </a>
+        </footer>
+    </div>
+</div>
+
+                
+                
+                
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+            <footer class="article-footer">
+                
+                
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.it9.top/essay/AndroidManifest.xml 里面各个属性的解析/&title=《AndroidManifest.xml 里面各个属性的解析》 — IT Go&pic=/blog_images/20200328165357.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.it9.top/essay/AndroidManifest.xml 里面各个属性的解析/&title=《AndroidManifest.xml 里面各个属性的解析》 — IT Go&source=瞎搞事，瞎折腾，瞎扯淡" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.it9.top/essay/AndroidManifest.xml 里面各个属性的解析/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《AndroidManifest.xml 里面各个属性的解析》 — IT Go&url=https://blog.it9.top/essay/AndroidManifest.xml 里面各个属性的解析/&via=https://blog.it9.top" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.it9.top/essay/AndroidManifest.xml 里面各个属性的解析/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://blog.it9.top/essay/AndroidManifest.xml 里面各个属性的解析/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+                
+                <ul class="article-footer-menu">
+                    
+                    
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/android/" class="color3">Android</a>
+      
+  </li>
+
+                </ul>
+                
+            </footer>
+        </div>
+</article>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/essay/Android 本地打包签名方案尝试/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Android 本地打包签名方案尝试</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div id="SOHUCS" sid="AndroidManifest.xml 里面各个属性的解析"></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cytXViG69';
+        var conf = 'prod_ec256658191d4702179ffc2efd670f6d';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Copyright &copy; 2020, All Rights Reserved.
+      <br>Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="https://github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+         change by <a href="mailto:xuqingquan1995@gmail.com" target="_blank"> IT Go</a>
+         <br>闽ICP备17032899号-1
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://blog.it9.top",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/note/">小知识</a><a class="category-link" href="/categories/essay/">随笔</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/android/" style="font-size: 20px;">Android</a> <a href="/tags/flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/python/" style="font-size: 10px;">Python</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-list"></i><span>全部</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/categories/essay">
+                    <i class="fa fa-edit"></i><span>随笔</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/categories/note">
+                    <i class="fa fa-sticky-note"></i><span>小知识</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/android/" style="font-size: 20px;">Android</a> <a href="/tags/flutter/" style="font-size: 10px;">Flutter</a> <a href="/tags/python/" style="font-size: 10px;">Python</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false}});</script></body>
+</html>
